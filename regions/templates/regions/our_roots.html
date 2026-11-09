@@ -1,9 +1,337 @@
 
 {% extends 'regions/base.html' %}
+{% load static %}
 
 {% block title %}مزرعتنا | أرضنا{% endblock %}
 
 {% block content %}
-    <h1>مزرعتنا - عنيكر</h1>
-    <p>من محافظة القنفذة، بدأت حكاية أرضنا.</p>
+
+<section class="relative flex min-h-[80vh] items-center justify-center overflow-hidden text-white">
+    <img
+        src="{% static 'regions/images/farm/mango.jpg' %}"
+        alt="أشجار المانجو"
+        class="absolute inset-0 h-full w-full object-cover"
+    >
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#10291F]/95 via-[#10291F]/60 to-[#10291F]/30"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center">
+        <span class="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-sm backdrop-blur-md">
+            القنفذة | قرية عنيكر
+        </span>
+
+        <h1 class="mt-7 text-4xl font-bold leading-tight md:text-7xl">
+            من عنيكر بدأت الحكاية
+        </h1>
+
+        <p class="mx-auto mt-7 max-w-2xl text-lg leading-9 text-white/85">
+            بين أشجار المانجو والليمون وألوان الزهور،
+            بدأت فكرة أرضنا من مكان قريب إلى القلب.
+        </p>
+
+        <a
+            href="#our-story"
+            class="mt-10 inline-block rounded-full bg-[#C6A46C] px-8 py-4 font-semibold text-[#173C30] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5D2A7]"
+        >
+            اكتشف حكايتنا
+        </a>
+    </div>
+</section>
+
+
+<section id="our-story" class="scroll-mt-20 bg-[#F5F0E6] px-6 py-24 transition-colors duration-300 dark:bg-[#17231D]">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+
+        <div>
+            <span class="font-semibold text-[#66876A] dark:text-[#AFC7AD]">
+                جذور الحكاية
+            </span>
+
+            <h2 class="mt-4 text-4xl font-bold leading-tight text-[#173C30] dark:text-[#F5F0E6]">
+                مزرعة صنعت الإلهام
+            </h2>
+
+            <p class="mt-7 leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                في قرية عنيكر بمحافظة القنفذة تقع مزرعة والدي،
+                حيث تنمو أشجار المانجو والليمون وتزدهر أنواع
+                متعددة من الورود والنباتات المزهرة.
+            </p>
+
+            <p class="mt-5 leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                كان اهتمام والدي بالزراعة وارتباطنا بهذه المزرعة
+                من أسباب اختياري للزراعة السعودية موضوعًا لمشروع أرضنا.
+                ومن هذه التجربة الشخصية، جاءت فكرة التعرف
+                على التنوع الزراعي في مختلف مناطق المملكة.
+            </p>
+        </div>
+
+        <div class="group overflow-hidden rounded-3xl shadow-xl">
+            <img
+                src="{% static 'regions/images/farm/lemon.jpg' %}"
+                alt="أشجار الليمون"
+                class="h-96 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+            >
+        </div>
+    </div>
+</section>
+
+
+<section id="farm-crops" class="bg-[#EAEFE8] px-6 py-24 transition-colors duration-300 dark:bg-[#203329]">
+    <div class="mx-auto max-w-7xl">
+
+        <div class="mb-14 text-center">
+            <span class="font-semibold text-[#66876A] dark:text-[#AFC7AD]">
+                من خيرات مزرعتنا
+            </span>
+
+            <h2 class="mt-4 text-4xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                ثمار تنمو بالعناية
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-2xl leading-8 text-[#56685D] dark:text-[#C1D0C4]">
+                من المانجو إلى الليمون، تضم مزرعتنا
+                محاصيل متنوعة تعكس جمال الزراعة وثمارها.
+            </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2">
+
+            <article class="group overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:bg-[#26382E]">
+                <div class="overflow-hidden">
+                    <img
+                        src="{% static 'regions/images/farm/mango.jpg' %}"
+                        alt="المانجو في مزرعتنا"
+                        class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="p-8">
+                    <span class="font-semibold text-[#D28A35] dark:text-[#E9B76A]">
+                        محصولنا الأبرز
+                    </span>
+
+                    <h3 class="mt-3 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                        المانجو
+                    </h3>
+
+                    <p class="mt-5 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
+                        تتميز مزرعتنا بأشجار المانجو،
+                        وهي من أبرز المحاصيل التي نعتز بزراعتها.
+                        وتحتاج أشجارها إلى العناية والري المناسب
+                        للحصول على ثمار جيدة.
+                    </p>
+                </div>
+            </article>
+
+            <article class="group overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:bg-[#26382E]">
+                <div class="overflow-hidden">
+                    <img
+                        src="{% static 'regions/images/farm/lemon.jpg' %}"
+                        alt="الليمون في مزرعتنا"
+                        class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="p-8">
+                    <span class="font-semibold text-[#7A9442] dark:text-[#C0D78A]">
+                        من أشجار الحمضيات
+                    </span>
+
+                    <h3 class="mt-3 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                        الليمون
+                    </h3>
+
+                    <p class="mt-5 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
+                        إلى جانب المانجو، تضم المزرعة أشجار الليمون،
+                        التي تتميز بثمارها الحمضية واستخداماتها
+                        الغذائية المتنوعة.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="farm-flowers" class="bg-[#F5F0E6] px-6 py-24 transition-colors duration-300 dark:bg-[#17231D]">
+    <div class="mx-auto max-w-7xl">
+
+        <div class="mb-14 text-center">
+            <span class="font-semibold text-[#A76B89] dark:text-[#E1A8C4]">
+                جمال الطبيعة
+            </span>
+
+            <h2 class="mt-4 text-4xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                زهور من مزرعتنا
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-2xl leading-8 text-[#56685D] dark:text-[#C1D0C4]">
+                لا تقتصر مزرعتنا على الأشجار المثمرة؛
+                بل تضم مجموعة من النباتات المزهرة
+                التي تضيف إلى المكان ألوانًا وتنوعًا.
+            </p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+            <article class="rounded-3xl border border-pink-200 bg-pink-50 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-pink-400/20 dark:bg-[#382B36]">
+                <span class="text-4xl">🌼</span>
+
+                <h3 class="mt-5 text-2xl font-bold text-pink-900 dark:text-pink-200">
+                    الياسمين الأبيض
+                </h3>
+
+                <p class="mt-4 leading-8 text-pink-900/75 dark:text-pink-100/80">
+                    أزهار بيضاء رقيقة تتميز بجمالها ورائحتها العطرية.
+                </p>
+            </article>
+
+            <article class="rounded-3xl border border-fuchsia-200 bg-fuchsia-50 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-fuchsia-400/20 dark:bg-[#392A3A]">
+                <span class="text-4xl">🌺</span>
+
+                <h3 class="mt-5 text-2xl font-bold text-fuchsia-900 dark:text-fuchsia-200">
+                    الجهنمية
+                </h3>
+
+                <p class="mt-4 leading-8 text-fuchsia-900/75 dark:text-fuchsia-100/80">
+                    نبات زينة يتميز بألوانه الزاهية وقدرته على
+                    النمو في البيئات الدافئة.
+                </p>
+            </article>
+
+            <article class="rounded-3xl border border-violet-200 bg-violet-50 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-violet-400/20 dark:bg-[#302B40]">
+                <span class="text-4xl">🪻</span>
+
+                <h3 class="mt-5 text-2xl font-bold text-violet-900 dark:text-violet-200">
+                    الخزامى الأفريقية
+                </h3>
+
+                <p class="mt-4 leading-8 text-violet-900/75 dark:text-violet-100/80">
+                    من النباتات المزهرة التي تضيف درجات
+                    بنفسجية جميلة إلى الحديقة.
+                </p>
+            </article>
+
+            <article class="rounded-3xl border border-rose-200 bg-rose-50 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-rose-400/20 dark:bg-[#3B2C33]">
+                <span class="text-4xl">🌸</span>
+
+                <h3 class="mt-5 text-2xl font-bold text-rose-900 dark:text-rose-200">
+                    كف مريم
+                </h3>
+
+                <p class="mt-4 leading-8 text-rose-900/75 dark:text-rose-100/80">
+                    أحد النباتات الموجودة في مزرعتنا،
+                    ويُعرف محليًا بهذا الاسم.
+                </p>
+            </article>
+
+            <article class="rounded-3xl border border-yellow-200 bg-yellow-50 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-yellow-400/20 dark:bg-[#3A3526]">
+                <span class="text-4xl">🌻</span>
+
+                <h3 class="mt-5 text-2xl font-bold text-yellow-900 dark:text-yellow-200">
+                    الورد الأصفر المخروطي
+                </h3>
+
+                <p class="mt-4 leading-8 text-yellow-900/75 dark:text-yellow-100/80">
+                    نبات مزهر يتميز بلونه الأصفر
+                    وشكله اللافت بين نباتات الحديقة.
+                </p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="farm-gallery" class="bg-[#EAEFE8] px-6 py-24 transition-colors duration-300 dark:bg-[#203329]">
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-12 text-center">
+            <span class="font-semibold text-[#66876A] dark:text-[#AFC7AD]">
+                مشاهد من الطبيعة
+            </span>
+
+            <h2 class="mt-4 text-4xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                من أرجاء مزرعتنا
+            </h2>
+        </div>
+
+        <div class="swiper farm-swiper overflow-hidden rounded-3xl shadow-xl">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img
+                        src="{% static 'regions/images/farm/mango.jpg' %}"
+                        alt="أشجار المانجو"
+                        class="h-80 w-full object-cover md:h-[500px]"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="swiper-slide">
+                    <img
+                        src="{% static 'regions/images/farm/lemon.jpg' %}"
+                        alt="أشجار الليمون"
+                        class="h-80 w-full object-cover md:h-[500px]"
+                        loading="lazy"
+                    >
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+
+<section class="bg-[#173C30] px-6 py-24 text-center text-white transition-colors duration-300 dark:bg-[#102019]">
+    <div class="mx-auto max-w-3xl">
+
+        <span class="font-semibold text-[#C6A46C]">
+            من عنيكر إلى أرضنا
+        </span>
+
+        <h2 class="mt-5 text-4xl font-bold leading-tight md:text-5xl">
+            من أرض صغيرة، تبدأ حكاية كبيرة
+        </h2>
+
+        <p class="mx-auto mt-7 leading-9 text-white/80">
+            كانت مزرعتنا مصدر إلهام لهذا المشروع،
+            ومنها انطلقت رحلتنا لاكتشاف التنوع الزراعي
+            في المملكة العربية السعودية.
+        </p>
+
+        <a
+            href="{% url 'regions:home' %}#regions"
+            class="mt-10 inline-block rounded-full bg-[#C6A46C] px-8 py-4 font-semibold text-[#173C30] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5D2A7]"
+        >
+            استكشف مناطق أرضنا
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    new Swiper(".farm-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: ".farm-swiper .swiper-pagination",
+            clickable: true
+        }
+    });
+</script>
 {% endblock %}
