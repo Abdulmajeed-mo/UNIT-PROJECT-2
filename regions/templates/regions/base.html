@@ -36,12 +36,21 @@
       <nav
         class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6"
       >
-        <a
-          href="{% url 'regions:home' %}"
-          class="text-2xl font-bold tracking-tight"
-        >
-          🌿 أرضنا
-        </a>
+      
+<a href="{% url 'regions:home' %}" class="flex shrink-0 items-center" aria-label="أرضنا - الصفحة الرئيسية">
+    <img
+        src="{% static 'regions/images/logos/logo-light.png' %}"
+        alt="شعار أرضنا"
+        class="block h-14 w-auto object-contain sm:h-16 dark:hidden"
+    >
+
+    <img
+        src="{% static 'regions/images/logos/logo-dark.png' %}"
+        alt="شعار أرضنا"
+        class="hidden h-14 w-auto object-contain sm:h-16 dark:block"
+    >
+</a>
+
 
         <div class="flex items-center gap-6 text-sm font-medium">
           <a
@@ -83,10 +92,22 @@
         class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6"
       >
         <div>
-          <h2 class="text-2xl font-bold mb-2">أرضنا | ARDNA</h2>
-          <p class="text-sm text-[#F5F0E6]/70">
-            رحلة في خيرات المملكة العربية السعودية.
-          </p>
+<a href="{% url 'regions:home' %}" class="inline-flex items-center" aria-label="أرضنا - الصفحة الرئيسية">
+    <img
+        src="{% static 'regions/images/logos/logo-dark.png' %}"
+        alt="شعار أرضنا"
+        class="block h-20 w-auto object-contain dark:hidden"
+        loading="lazy"
+    >
+
+    <img
+        src="{% static 'regions/images/logos/logo-dark.png' %}"
+        alt="شعار أرضنا"
+        class="hidden h-20 w-auto object-contain dark:block"
+        loading="lazy"
+    >
+</a>
+
         </div>
 
         <div class="flex flex-wrap items-center gap-5 text-sm">

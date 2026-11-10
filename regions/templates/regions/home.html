@@ -6,521 +6,676 @@
 
 {% block content %}
 
-<section class="relative flex min-h-[85vh] items-center justify-center overflow-hidden text-white">
-    <img
-        src="{% static 'regions/images/home/hero.jpg' %}"
-        alt="مزرعة خضراء في المملكة العربية السعودية"
-        class="absolute inset-0 h-full w-full object-cover"
-    >
+<style>
+    .home-hero {
+        min-height: min(920px, 100svh);
+        isolation: isolate;
+    }
 
-    <div class="absolute inset-0 bg-gradient-to-t from-[#10291F]/90 via-[#10291F]/50 to-[#10291F]/25"></div>
+    .home-hero-media {
+        animation: homeHeroZoom 14s ease-out both;
+    }
 
-    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        <span class="mb-5 inline-block text-sm tracking-widest text-[#E5D2A7]">
-            أرضنا | ARDNA
-        </span>
+    .home-grain {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+        opacity: 0.12;
+        pointer-events: none;
+    }
 
-        <h1 class="mb-6 text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
-            من مزرعتنا تبدأ الحكاية
-        </h1>
+    .home-outline-text {
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    }
 
-        <p class="mb-10 text-lg leading-relaxed text-white/85 md:text-2xl">
-            ومن أرض المملكة، تنمو حكايات لا تنتهي.
-        </p>
+    .home-scroll-track {
+        position: relative;
+        width: 1px;
+        height: 60px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.25);
+    }
 
-        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-                href="{% url 'regions:our_roots' %}"
-                class="rounded-full bg-[#C6A46C] px-8 py-4 font-semibold text-[#173C30] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5D2A7]"
+    .home-scroll-track::after {
+        content: "";
+        position: absolute;
+        top: -45%;
+        left: 0;
+        width: 100%;
+        height: 45%;
+        background: #e5d2a7;
+        animation: homeScroll 2s ease-in-out infinite;
+    }
+
+    .home-region {
+        isolation: isolate;
+        transform: translateZ(0);
+    }
+
+    .home-region-image {
+        transition: transform 1s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .home-region:hover .home-region-image,
+    .home-region:focus-visible .home-region-image {
+        transform: scale(1.09);
+    }
+
+    .home-region-arrow {
+        transition: transform .35s ease, background .35s ease;
+    }
+
+    .home-region:hover .home-region-arrow {
+        transform: translateX(-6px);
+        background: #c6a46c;
+        color: #173c30;
+    }
+
+    .home-story-number {
+        font-family: Georgia, serif;
+        font-size: clamp(5rem, 12vw, 11rem);
+        line-height: .9;
+        opacity: .11;
+    }
+
+    .home-horizontal-rule {
+        height: 1px;
+        background: linear-gradient(
+            to left,
+            transparent,
+            #c6a46c,
+            transparent
+        );
+    }
+
+    .home-marquee {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .home-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: homeMarquee 30s linear infinite;
+    }
+
+    .home-marquee:hover .home-marquee-track {
+        animation-play-state: paused;
+    }
+
+    .home-marquee-track > span {
+        flex: none;
+        padding-inline: 2rem;
+    }
+
+    @keyframes homeHeroZoom {
+        from { transform: scale(1.12); }
+        to { transform: scale(1); }
+    }
+
+    @keyframes homeScroll {
+        to { top: 115%; }
+    }
+
+    @keyframes homeMarquee {
+        to { transform: translateX(50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .home-hero-media,
+        .home-scroll-track::after,
+        .home-marquee-track {
+            animation: none;
+        }
+    }
+</style>
+
+
+<main class="overflow-hidden bg-[#F5F0E6] dark:bg-[#17231D]">
+
+    <section class="home-hero relative flex items-center overflow-hidden bg-[#10251C] text-white">
+
+        <div class="home-hero-media absolute inset-0">
+            <img
+                src="{% static 'regions/images/home/hero.jpg' %}"
+                alt="المشهد الزراعي في المملكة العربية السعودية"
+                class="absolute inset-0 h-full w-full object-cover"
+                fetchpriority="high"
             >
-                اكتشف مزرعتنا
-            </a>
 
-            <a
-                href="#regions"
-                class="rounded-full border border-white/60 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#173C30]"
+            <video
+                id="home-hero-video"
+                class="absolute inset-0 h-full w-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="{% static 'regions/images/home/hero.jpg' %}"
+                aria-hidden="true"
             >
-                استكشف أرضنا
-            </a>
-        </div>
-    </div>
-
-    <a
-        href="#story"
-        class="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-white/80 transition-colors hover:text-white"
-    >
-        اكتشف المزيد ↓
-    </a>
-</section>
-
-
-<section id="story" class="bg-[#F5F0E6] px-6 py-24 transition-colors duration-300 dark:bg-[#17231D]">
-    <div class="mx-auto max-w-6xl">
-
-        <div class="mb-16 text-center">
-            <span class="text-sm font-semibold text-[#66876A] dark:text-[#AFC7AD]">
-                حكاية أرضنا
-            </span>
-
-            <h2 class="mt-3 text-4xl font-bold text-[#173C30] md:text-5xl dark:text-[#F5F0E6]">
-                أرضٌ تحكي حكاية العطاء
-            </h2>
-        </div>
-
-        <div class="space-y-24">
-
-            <article class="grid items-center gap-10 md:grid-cols-2">
-                <div>
-                    <span class="text-sm font-bold text-[#66876A] dark:text-[#AFC7AD]">
-                        01 — البدايات
-                    </span>
-
-                    <h3 class="mt-4 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                        من بذرة صغيرة تبدأ الحكاية
-                    </h3>
-
-                    <p class="mt-5 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
-                        ارتبط الإنسان السعودي بأرضه منذ القدم،
-                        فكانت الزراعة مصدرًا للغذاء والعطاء،
-                        وانتقلت خبراتها من جيل إلى جيل.
-                    </p>
-                </div>
-
-                <div class="group overflow-hidden rounded-3xl shadow-xl">
-                    <img
-                        src="{% static 'regions/images/home/story-1.webp' %}"
-                        alt="الزراعة التقليدية في المملكة"
-                        class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                    >
-                </div>
-            </article>
-
-            <article class="grid items-center gap-10 md:grid-cols-2">
-                <div class="group overflow-hidden rounded-3xl shadow-xl">
-                    <img
-                        src="{% static 'regions/images/home/story-2.jpg' %}"
-                        alt="المدرجات الزراعية والطبيعة الجبلية"
-                        class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                    >
-                </div>
-
-                <div>
-                    <span class="text-sm font-bold text-[#66876A] dark:text-[#AFC7AD]">
-                        02 — التنوع
-                    </span>
-
-                    <h3 class="mt-4 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                        أرض واحدة، وخيرات متنوعة
-                    </h3>
-
-                    <p class="mt-5 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
-                        من واحات الأحساء إلى مرتفعات عسير،
-                        تتنوع البيئات الزراعية في المملكة،
-                        وتزدهر محاصيلها بحسب طبيعة المناخ
-                        والتربة والمياه.
-                    </p>
-                </div>
-            </article>
-
-            <article class="grid items-center gap-10 md:grid-cols-2">
-                <div>
-                    <span class="text-sm font-bold text-[#66876A] dark:text-[#AFC7AD]">
-                        03 — المستقبل
-                    </span>
-
-                    <h3 class="mt-4 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                        نزرع اليوم لمستقبل أخضر
-                    </h3>
-
-                    <p class="mt-5 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
-                        تتطور الزراعة السعودية باستخدام تقنيات
-                        حديثة تساعد على تحسين الإنتاج وترشيد
-                        استهلاك المياه والمحافظة على الموارد الطبيعية.
-                    </p>
-                </div>
-
-                <div class="group overflow-hidden rounded-3xl shadow-xl">
-                    <img
-                        src="{% static 'regions/images/home/story-3.jpg' %}"
-                        alt="تقنيات الزراعة الحديثة"
-                        class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                    >
-                </div>
-            </article>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="regions" class="scroll-mt-20 bg-[#EAEFE8] px-6 py-24 transition-colors duration-300 dark:bg-[#203329]">
-    <div class="mx-auto max-w-7xl">
-
-        <div class="mb-12 text-center">
-            <span class="text-sm font-semibold text-[#66876A] dark:text-[#AFC7AD]">
-                رحلة عبر المملكة
-            </span>
-
-            <h2 class="mt-3 text-4xl font-bold text-[#173C30] md:text-5xl dark:text-[#F5F0E6]">
-                استكشف أرضنا
-            </h2>
-
-            <p class="mx-auto mt-5 max-w-2xl text-[#56685D] dark:text-[#C1D0C4]">
-                من واحات النخيل إلى جبال الجاكرندا،
-                اكتشف التنوع الزراعي الذي يميز مناطق المملكة.
-            </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-            {% for slug, region in regions %}
-            <a
-                href="{% url 'regions:region_detail' slug=slug %}"
-                class="group relative h-96 overflow-hidden rounded-3xl shadow-lg transition-shadow duration-300 hover:shadow-2xl"
-            >
-                <img
-                    src="{% static 'regions/images/regions/'|add:slug|add:'.jpg' %}"
-                    alt="{{ region.name }}"
-                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                <source
+                    src="{% static 'regions/videos/home.mp4' %}"
+                    type="video/mp4"
                 >
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
-
-                <div class="absolute inset-x-0 bottom-0 p-7 text-white transition-transform duration-500 group-hover:-translate-y-2">
-                    <span class="text-sm text-white/75">
-                        {{ region.featured_crop }}
-                    </span>
-
-                    <h3 class="mt-2 text-3xl font-bold text-white">
-                        {{ region.name }}
-                    </h3>
-
-                    <p class="mt-3 text-sm text-white/80">
-                        {{ region.title }}
-                    </p>
-
-                    <span class="mt-5 inline-block text-sm font-semibold text-[#E5D2A7]">
-                        اكتشف المنطقة ←
-                    </span>
-                </div>
-            </a>
-            {% endfor %}
-
-        </div>
-    </div>
-</section>
-
-
-<section id="crops" class="overflow-hidden bg-[#F5F0E6] px-6 py-24 transition-colors duration-300 dark:bg-[#17231D]">
-    <div class="mx-auto max-w-7xl">
-
-        <div class="mb-12 text-center">
-            <span class="text-sm font-semibold text-[#66876A] dark:text-[#AFC7AD]">
-                كنوز الطبيعة
-            </span>
-
-            <h2 class="mt-3 text-4xl font-bold text-[#173C30] md:text-5xl dark:text-[#F5F0E6]">
-                خيرات أرضنا
-            </h2>
-
-            <p class="mx-auto mt-5 max-w-2xl text-[#56685D] dark:text-[#C1D0C4]">
-                محاصيل ونباتات متنوعة، لكل منها قصة
-                تحكي ارتباط الأرض بالإنسان.
-            </p>
+            </video>
         </div>
 
-        <div class="swiper crops-swiper">
-            <div class="swiper-wrapper">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#091B13]/95 via-[#10291F]/55 to-[#10291F]/35"></div>
+        <div class="home-grain absolute inset-0"></div>
 
-                <div class="swiper-slide">
-                    <a
-                        href="{% url 'regions:region_detail' slug='al-qassim' %}"
-                        class="group block overflow-hidden rounded-3xl bg-white shadow-md transition-colors duration-300 dark:bg-[#26382E]"
-                    >
-                        <div class="overflow-hidden">
-                            <img
-                                src="{% static 'regions/images/regions/al-qassim.jpg' %}"
-                                alt="تمور القصيم"
-                                class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy"
-                            >
-                        </div>
+        <div class="pointer-events-none absolute inset-x-0 top-24 hidden justify-between px-10 text-xs tracking-[.25em] text-white/60 lg:flex">
+            <span>ARDNA — SAUDI AGRICULTURE</span>
+            <span>24° N / THE LAND OF STORIES</span>
+        </div>
 
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                                التمور
-                            </h3>
+        <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-28 pt-36 md:pb-32 md:pt-44">
 
-                            <p class="mt-2 text-[#66876A] dark:text-[#AFC7AD]">
-                                القصيم والأحساء
-                            </p>
+            <div class="max-w-5xl">
 
-                            <span class="mt-4 inline-block text-sm font-semibold text-[#173C30] dark:text-[#E5D2A7]">
-                                اكتشف المزيد ←
-                            </span>
-                        </div>
-                    </a>
+                <div class="hero-reveal mb-8 inline-flex items-center gap-3">
+                    <span class="h-px w-10 bg-[#C6A46C]"></span>
+                    <span class="text-sm font-semibold tracking-wider text-[#E5D2A7]">
+                        أرضنا | ARDNA
+                    </span>
                 </div>
 
-                <div class="swiper-slide">
+                <h1 class="hero-reveal editorial-heading text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[1.08]">
+                    من أرضنا
+                    <span class="block text-[#D9BF8C]">
+                        تبدأ الحكاية
+                    </span>
+                </h1>
+
+                <p class="hero-reveal mt-8 max-w-2xl text-lg leading-9 text-white/85 md:text-2xl md:leading-10">
+                    رحلة تفاعلية نكتشف فيها خيرات المملكة،
+                    من جذور الزراعة الأولى إلى آفاق مستقبلها الأخضر.
+                </p>
+
+                <div class="hero-reveal mt-10 flex flex-wrap gap-4">
                     <a
-                        href="{% url 'regions:region_detail' slug='taif' %}"
-                        class="group block overflow-hidden rounded-3xl bg-white shadow-md transition-colors duration-300 dark:bg-[#26382E]"
+                        href="#regions"
+                        class="inline-flex items-center gap-4 rounded-full bg-[#C6A46C] px-8 py-4 font-bold text-[#173C30] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5D2A7]"
                     >
-                        <div class="overflow-hidden">
-                            <img
-                                src="{% static 'regions/images/regions/taif.jpg' %}"
-                                alt="الورد الطائفي"
-                                class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy"
-                            >
-                        </div>
+                        اكتشف أرضنا
+                        <span aria-hidden="true">↙</span>
+                    </a>
 
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                                الورد الطائفي
-                            </h3>
-
-                            <p class="mt-2 text-[#66876A] dark:text-[#AFC7AD]">
-                                الطائف
-                            </p>
-
-                            <span class="mt-4 inline-block text-sm font-semibold text-[#173C30] dark:text-[#E5D2A7]">
-                                اكتشف المزيد ←
-                            </span>
-                        </div>
+                    <a
+                        href="{% url 'regions:our_roots' %}"
+                        class="inline-flex items-center gap-4 rounded-full border border-white/40 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#173C30]"
+                    >
+                        حكاية مزرعتنا
+                        <span aria-hidden="true">←</span>
                     </a>
                 </div>
-
-                <div class="swiper-slide">
-                    <a
-                        href="{% url 'regions:region_detail' slug='al-jouf' %}"
-                        class="group block overflow-hidden rounded-3xl bg-white shadow-md transition-colors duration-300 dark:bg-[#26382E]"
-                    >
-                        <div class="overflow-hidden">
-                            <img
-                                src="{% static 'regions/images/regions/al-jouf.jpg' %}"
-                                alt="الزيتون"
-                                class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy"
-                            >
-                        </div>
-
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                                الزيتون
-                            </h3>
-
-                            <p class="mt-2 text-[#66876A] dark:text-[#AFC7AD]">
-                                الجوف
-                            </p>
-
-                            <span class="mt-4 inline-block text-sm font-semibold text-[#173C30] dark:text-[#E5D2A7]">
-                                اكتشف المزيد ←
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a
-                        href="{% url 'regions:region_detail' slug='abha' %}"
-                        class="group block overflow-hidden rounded-3xl bg-white shadow-md transition-colors duration-300 dark:bg-[#26382E]"
-                    >
-                        <div class="overflow-hidden">
-                            <img
-                                src="{% static 'regions/images/regions/abha.jpg' %}"
-                                alt="أشجار الجاكرندا"
-                                class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy"
-                            >
-                        </div>
-
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                                الجاكرندا
-                            </h3>
-
-                            <p class="mt-2 text-[#66876A] dark:text-[#AFC7AD]">
-                                أبها
-                            </p>
-
-                            <span class="mt-4 inline-block text-sm font-semibold text-[#173C30] dark:text-[#E5D2A7]">
-                                اكتشف المزيد ←
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
             </div>
 
-            <div class="mt-10 flex items-center justify-center gap-4">
-                <button
-                    type="button"
-                    class="crop-prev rounded-full border border-[#173C30]/20 bg-white px-5 py-3 text-[#173C30] transition-colors duration-300 hover:bg-[#173C30] hover:text-white dark:border-white/20 dark:bg-[#26382E] dark:text-[#F5F0E6] dark:hover:bg-[#C6A46C] dark:hover:text-[#173C30]"
-                    aria-label="المحصول السابق"
+            <div class="hero-reveal mt-20 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/25 pt-7">
+                <div>
+                    <p class="text-3xl font-bold text-[#E5D2A7] md:text-4xl">05</p>
+                    <p class="mt-2 text-xs text-white/75 md:text-sm">مناطق زراعية</p>
+                </div>
+
+                <div>
+                    <p class="text-3xl font-bold text-[#E5D2A7] md:text-4xl">07</p>
+                    <p class="mt-2 text-xs text-white/75 md:text-sm">صفحات للاستكشاف</p>
+                </div>
+
+                <div>
+                    <p class="text-3xl font-bold text-[#E5D2A7] md:text-4xl">01</p>
+                    <p class="mt-2 text-xs text-white/75 md:text-sm">حكاية عائلية</p>
+                </div>
+            </div>
+        </div>
+
+        <a
+            href="#story"
+            class="absolute bottom-8 left-6 z-10 flex items-center gap-4 text-sm text-white/80 transition-colors hover:text-white md:left-12"
+        >
+            <span class="home-scroll-track"></span>
+            مرّر لاكتشاف الحكاية
+        </a>
+
+        <div class="pointer-events-none absolute bottom-10 right-6 z-10 hidden text-7xl font-black opacity-10 md:block">
+            أرضنا
+        </div>
+
+    </section>
+
+
+    <div class="home-marquee border-y border-[#C6A46C]/25 bg-[#173C30] py-5 text-[#E5D2A7]">
+        <div class="home-marquee-track text-sm font-semibold tracking-wider md:text-base" aria-hidden="true">
+            <span>من الأرض تنمو الحياة ✦ واحات الأحساء ✦ ورد الطائف ✦ تمور القصيم ✦ زيتون الجوف ✦ جاكرندا أبها ✦</span>
+            <span>من الأرض تنمو الحياة ✦ واحات الأحساء ✦ ورد الطائف ✦ تمور القصيم ✦ زيتون الجوف ✦ جاكرندا أبها ✦</span>
+        </div>
+    </div>
+
+
+    <section id="story" class="scroll-mt-24 px-6 py-28 text-[#173C30] dark:text-[#F5F0E6]">
+        <div class="mx-auto max-w-7xl">
+
+            <div class="reveal-item mb-24 max-w-4xl">
+                <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                    حكاية أرضنا
+                </span>
+
+                <h2 class="editorial-heading mt-6 text-5xl md:text-7xl">
+                    ليست مجرد أرض.
+                    <span class="block text-[#66876A] dark:text-[#C6A46C]">
+                        بل حكاية أجيال.
+                    </span>
+                </h2>
+
+                <p class="mt-7 max-w-2xl text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                    لكل بذرة بداية، ولكل محصول رحلة، ولكل منطقة
+                    في المملكة قصة تستحق أن نكتشفها.
+                </p>
+            </div>
+
+            <div class="space-y-28 md:space-y-40">
+
+                <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+                    <div class="reveal-item relative">
+                        <span class="home-story-number absolute -top-16 right-0 text-[#173C30] dark:text-white">
+                            01
+                        </span>
+
+                        <div class="relative pt-14">
+                            <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                                البدايات
+                            </span>
+
+                            <h3 class="editorial-heading mt-6 text-4xl md:text-5xl">
+                                من بذرة صغيرة
+                                <span class="block text-[#66876A] dark:text-[#C6A46C]">تبدأ الحكاية</span>
+                            </h3>
+
+                            <p class="mt-7 max-w-lg text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
+                                ارتبط الإنسان السعودي بأرضه منذ القدم،
+                                فكانت الزراعة مصدرًا للغذاء والعطاء،
+                                وانتقلت خبراتها من جيل إلى جيل.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-item relative">
+                        <div class="image-reveal overflow-hidden rounded-[2rem] shadow-2xl">
+                            <img
+                                src="{% static 'regions/images/home/story-1.webp' %}"
+                                alt="الزراعة التقليدية في المملكة"
+                                class="h-[420px] w-full object-cover md:h-[560px]"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="absolute -bottom-6 left-5 rounded-2xl bg-[#C6A46C] px-6 py-4 font-bold text-[#173C30] shadow-xl md:-left-7">
+                            من الجذور
+                            <span class="block text-xs font-normal">تولد الحكايات</span>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+                    <div class="reveal-item relative lg:order-1">
+                        <span class="home-story-number absolute -top-16 right-0 text-[#173C30] dark:text-white">
+                            02
+                        </span>
+
+                        <div class="relative pt-14">
+                            <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                                التنوع
+                            </span>
+
+                            <h3 class="editorial-heading mt-6 text-4xl md:text-5xl">
+                                أرض واحدة،
+                                <span class="block text-[#66876A] dark:text-[#C6A46C]">وخيرات لا تُحصى</span>
+                            </h3>
+
+                            <p class="mt-7 max-w-lg text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
+                                من واحات الأحساء إلى مرتفعات عسير،
+                                تتنوع البيئات الزراعية في المملكة،
+                                وتزدهر محاصيلها بحسب طبيعة المناخ
+                                والتربة والمياه.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-item relative lg:order-2">
+                        <div class="image-reveal overflow-hidden rounded-[2rem] shadow-2xl">
+                            <img
+                                src="{% static 'regions/images/home/story-2.jpg' %}"
+                                alt="المدرجات الزراعية والطبيعة الجبلية"
+                                class="h-[420px] w-full object-cover md:h-[560px]"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+                    <div class="reveal-item relative">
+                        <span class="home-story-number absolute -top-16 right-0 text-[#173C30] dark:text-white">
+                            03
+                        </span>
+
+                        <div class="relative pt-14">
+                            <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                                المستقبل
+                            </span>
+
+                            <h3 class="editorial-heading mt-6 text-4xl md:text-5xl">
+                                نزرع اليوم
+                                <span class="block text-[#66876A] dark:text-[#C6A46C]">لغدٍ أخضر</span>
+                            </h3>
+
+                            <p class="mt-7 max-w-lg text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
+                                تتطور الزراعة السعودية باستخدام تقنيات
+                                حديثة تساعد على تحسين الإنتاج وترشيد
+                                استهلاك المياه والمحافظة على الموارد الطبيعية.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-item">
+                        <div class="image-reveal overflow-hidden rounded-[2rem] shadow-2xl">
+                            <img
+                                src="{% static 'regions/images/home/story-3.jpg' %}"
+                                alt="تقنيات الزراعة الحديثة"
+                                class="h-[420px] w-full object-cover md:h-[560px]"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="regions" class="scroll-mt-20 bg-[#EAEFE8] px-6 py-28 dark:bg-[#203329]">
+        <div class="mx-auto max-w-7xl">
+
+            <div class="reveal-item mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+                <div>
+                    <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                        رحلة عبر المملكة
+                    </span>
+
+                    <h2 class="editorial-heading mt-6 text-5xl text-[#173C30] md:text-7xl dark:text-[#F5F0E6]">
+                        خمس مناطق.
+                        <span class="block text-[#66876A] dark:text-[#C6A46C]">
+                            ألف حكاية.
+                        </span>
+                    </h2>
+                </div>
+
+                <p class="max-w-sm text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                    من واحات النخيل إلى جبال الجاكرندا،
+                    اختر وجهتك وابدأ رحلة الاستكشاف.
+                </p>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+
+                {% for slug, region in regions %}
+                <a
+                    href="{% url 'regions:region_detail' slug=slug %}"
+                    class="home-region reveal-item group relative block min-h-[360px] overflow-hidden rounded-[2rem] bg-[#173C30] shadow-lg lg:col-span-2 lg:min-h-[440px] {% if forloop.counter <= 2 %}lg:col-span-3 lg:min-h-[520px]{% endif %}"
+                    aria-label="استكشف {{ region.name }}"
                 >
+                    <img
+                        src="{% static region.hero_image %}"
+                        alt="{{ region.name }}"
+                        class="home-region-image absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/15"></div>
+
+                    <div class="absolute right-7 top-7 flex items-center gap-3">
+                        <span class="h-2 w-2 rounded-full bg-[#C6A46C]"></span>
+                        <span class="text-xs font-semibold text-white/85">
+                            {{ region.featured_crop }}
+                        </span>
+                    </div>
+
+                    <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-7 text-white md:p-9">
+                        <div>
+                            <span class="text-xs font-semibold tracking-wider text-[#E5D2A7]">
+                                0{{ forloop.counter }} / 05
+                            </span>
+
+                            <h3 class="mt-3 text-4xl font-bold md:text-5xl">
+                                {{ region.name }}
+                            </h3>
+
+                            <p class="mt-3 max-w-xs leading-7 text-white/80">
+                                {{ region.title }}
+                            </p>
+                        </div>
+
+                        <span class="home-region-arrow flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/50 text-2xl text-white" aria-hidden="true">
+                            ↖
+                        </span>
+                    </div>
+                </a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="crops" class="px-6 py-28 dark:bg-[#17231D]">
+        <div class="mx-auto max-w-7xl">
+
+            <div class="reveal-item mb-12">
+                <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
+                    كنوز الطبيعة
+                </span>
+
+                <h2 class="editorial-heading mt-6 text-5xl text-[#173C30] md:text-7xl dark:text-[#F5F0E6]">
+                    من الأرض،
+                    <span class="text-[#66876A] dark:text-[#C6A46C]">إلى الحياة.</span>
+                </h2>
+
+                <p class="mt-6 max-w-2xl text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                    لكل محصول قصة، ولكل موسم خيرات تنمو من أرض المملكة.
+                </p>
+            </div>
+
+            <div class="swiper crops-swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <a href="{% url 'regions:region_detail' slug='al-qassim' %}" class="group block overflow-hidden rounded-[2rem] bg-white shadow-lg dark:bg-[#26382E]">
+                            <div class="overflow-hidden">
+                                <img src="{% static 'regions/images/regions/al-qassim.jpg' %}" alt="التمور" class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                            </div>
+                            <div class="p-7">
+                                <span class="text-sm text-[#66876A] dark:text-[#AFC7AD]">القصيم والأحساء</span>
+                                <h3 class="mt-2 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">التمور</h3>
+                                <span class="mt-5 inline-block font-semibold text-[#66876A] dark:text-[#E5D2A7]">اكتشف المحصول ←</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="{% url 'regions:region_detail' slug='taif' %}" class="group block overflow-hidden rounded-[2rem] bg-white shadow-lg dark:bg-[#26382E]">
+                            <div class="overflow-hidden">
+                                <img src="{% static 'regions/images/regions/taif.jpg' %}" alt="الورد الطائفي" class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                            </div>
+                            <div class="p-7">
+                                <span class="text-sm text-[#66876A] dark:text-[#AFC7AD]">الطائف</span>
+                                <h3 class="mt-2 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">الورد الطائفي</h3>
+                                <span class="mt-5 inline-block font-semibold text-[#66876A] dark:text-[#E5D2A7]">اكتشف المحصول ←</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="{% url 'regions:region_detail' slug='al-jouf' %}" class="group block overflow-hidden rounded-[2rem] bg-white shadow-lg dark:bg-[#26382E]">
+                            <div class="overflow-hidden">
+                                <img src="{% static 'regions/images/regions/al-jouf.jpg' %}" alt="الزيتون" class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                            </div>
+                            <div class="p-7">
+                                <span class="text-sm text-[#66876A] dark:text-[#AFC7AD]">الجوف</span>
+                                <h3 class="mt-2 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">الزيتون</h3>
+                                <span class="mt-5 inline-block font-semibold text-[#66876A] dark:text-[#E5D2A7]">اكتشف المحصول ←</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="{% url 'regions:region_detail' slug='abha' %}" class="group block overflow-hidden rounded-[2rem] bg-white shadow-lg dark:bg-[#26382E]">
+                            <div class="overflow-hidden">
+                                <img src="{% static 'regions/images/regions/abha.jpg' %}" alt="الجاكرندا" class="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                            </div>
+                            <div class="p-7">
+                                <span class="text-sm text-[#66876A] dark:text-[#AFC7AD]">أبها</span>
+                                <h3 class="mt-2 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">الجاكرندا</h3>
+                                <span class="mt-5 inline-block font-semibold text-[#66876A] dark:text-[#E5D2A7]">اكتشف المحصول ←</span>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-10 flex justify-end gap-3">
+                <button type="button" class="crop-prev flex h-14 w-14 items-center justify-center rounded-full border border-[#173C30]/20 text-2xl text-[#173C30] transition hover:bg-[#173C30] hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-[#C6A46C] dark:hover:text-[#173C30]" aria-label="المحصول السابق">
                     →
                 </button>
 
-                <button
-                    type="button"
-                    class="crop-next rounded-full border border-[#173C30]/20 bg-white px-5 py-3 text-[#173C30] transition-colors duration-300 hover:bg-[#173C30] hover:text-white dark:border-white/20 dark:bg-[#26382E] dark:text-[#F5F0E6] dark:hover:bg-[#C6A46C] dark:hover:text-[#173C30]"
-                    aria-label="المحصول التالي"
-                >
+                <button type="button" class="crop-next flex h-14 w-14 items-center justify-center rounded-full border border-[#173C30]/20 text-2xl text-[#173C30] transition hover:bg-[#173C30] hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-[#C6A46C] dark:hover:text-[#173C30]" aria-label="المحصول التالي">
                     ←
                 </button>
             </div>
         </div>
-
-    </div>
-</section>
+    </section>
 
 
-<section id="farming" class="bg-[#EAEFE8] px-6 py-24 transition-colors duration-300 dark:bg-[#203329]">
-    <div class="mx-auto max-w-7xl">
+ 
+{% include 'regions/includes/agriculture_timeline.html' %}
 
-        <div class="mb-14 text-center">
-            <span class="text-sm font-semibold text-[#66876A] dark:text-[#AFC7AD]">
-                رحلة التطور
+
+
+    <section class="relative overflow-hidden bg-[#C6A46C] px-6 py-28 text-[#173C30]">
+        <div class="pointer-events-none absolute -left-10 -top-20 text-[18rem] font-black leading-none opacity-10">
+            أرضنا
+        </div>
+
+        <div class="reveal-item relative mx-auto max-w-4xl text-center">
+            <span class="text-sm font-bold tracking-wider">
+                من أرضنا وإليها
             </span>
 
-            <h2 class="mt-3 text-4xl font-bold text-[#173C30] md:text-5xl dark:text-[#F5F0E6]">
-                الزراعة بين الأمس والغد
+            <h2 class="editorial-heading mt-6 text-5xl md:text-7xl">
+                لكل أرض حكاية
+                <span class="block">تستحق أن تُروى.</span>
             </h2>
 
-            <p class="mx-auto mt-5 max-w-2xl text-[#56685D] dark:text-[#C1D0C4]">
-                من الأساليب المتوارثة إلى التقنيات الحديثة،
-                تستمر رحلة الزراعة نحو مستقبل أكثر استدامة.
+            <p class="mx-auto mt-8 max-w-2xl text-lg leading-9 text-[#173C30]/80">
+                اكتشف طبيعة المملكة الزراعية، وتعرف على محاصيلها،
+                وقصص المزارعين الذين جعلوا من الأرض مصدرًا للعطاء.
             </p>
-        </div>
 
-        <div class="grid gap-8 md:grid-cols-2">
-
-            <article class="overflow-hidden rounded-3xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:bg-[#26382E]">
-                <img
-                    src="{% static 'regions/images/home/traditional.jpg' %}"
-                    alt="الزراعة التقليدية"
-                    class="h-72 w-full object-cover"
-                    loading="lazy"
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a
+                    href="#regions"
+                    class="rounded-full bg-[#173C30] px-9 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-[#285542]"
                 >
+                    استكشف المناطق ↗
+                </a>
 
-                <div class="p-8">
-                    <span class="text-sm font-semibold text-[#A17D4C] dark:text-[#D7B889]">
-                        الماضي
-                    </span>
-
-                    <h3 class="mt-3 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                        الزراعة التقليدية
-                    </h3>
-
-                    <p class="mt-4 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
-                        اعتمد المزارعون على الخبرات المتوارثة
-                        وأساليب الزراعة التي تتناسب مع طبيعة الأرض.
-                    </p>
-
-                    <ul class="mt-6 space-y-3 text-[#173C30] dark:text-[#E0E9E1]">
-                        <li>🌱 الخبرة الزراعية المتوارثة</li>
-                        <li>💧 السواقي وطرق الري التقليدية</li>
-                        <li>🌾 العناية اليدوية بالمحاصيل</li>
-                        <li>☀️ الاعتماد على المواسم الطبيعية</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article class="overflow-hidden rounded-3xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:bg-[#26382E]">
-                <img
-                    src="{% static 'regions/images/home/modern.avif' %}"
-                    alt="الزراعة الحديثة"
-                    class="h-72 w-full object-cover"
-                    loading="lazy"
+                <a
+                    href="{% url 'regions:our_roots' %}"
+                    class="rounded-full border border-[#173C30]/40 px-9 py-4 font-semibold transition hover:-translate-y-1 hover:bg-[#173C30] hover:text-white"
                 >
-
-                <div class="p-8">
-                    <span class="text-sm font-semibold text-[#66876A] dark:text-[#AFC7AD]">
-                        المستقبل
-                    </span>
-
-                    <h3 class="mt-3 text-3xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                        الزراعة الحديثة
-                    </h3>
-
-                    <p class="mt-4 leading-8 text-[#56685D] dark:text-[#C1D0C4]">
-                        تستخدم الزراعة الحديثة التقنيات لتحسين
-                        الإنتاج ورفع كفاءة استخدام الموارد الطبيعية.
-                    </p>
-
-                    <ul class="mt-6 space-y-3 text-[#173C30] dark:text-[#E0E9E1]">
-                        <li>💧 الري بالتنقيط</li>
-                        <li>🏡 البيوت المحمية</li>
-                        <li>🌿 الزراعة المائية</li>
-                        <li>📡 التقنيات الزراعية الذكية</li>
-                    </ul>
-                </div>
-            </article>
-
+                    حكاية مزرعتنا ←
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-<section class="bg-[#173C30] px-6 py-24 text-center text-white">
-    <div class="mx-auto max-w-3xl">
-        <span class="text-sm font-semibold text-[#C6A46C]">
-            رحلتك تبدأ من هنا
-        </span>
-
-        <h2 class="mt-4 text-4xl font-bold leading-tight md:text-5xl">
-            لكل أرض حكاية تستحق أن تُروى
-        </h2>
-
-        <p class="mt-6 text-lg leading-8 text-white/75">
-            اكتشف طبيعة المملكة الزراعية، وتعرف على محاصيلها
-            وقصص المزارعين الذين جعلوا من الأرض مصدرًا للعطاء.
-        </p>
-
-        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-                href="#regions"
-                class="rounded-full bg-[#C6A46C] px-8 py-4 font-semibold text-[#173C30] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E5D2A7]"
-            >
-                استكشف المناطق
-            </a>
-
-            <a
-                href="{% url 'regions:our_roots' %}"
-                class="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#173C30]"
-            >
-                تعرف على مزرعتنا
-            </a>
-        </div>
-    </div>
-</section>
+</main>
 
 {% endblock %}
 
+
 {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+
 <script>
-    new Swiper(".crops-swiper", {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        loop: true,
-        navigation: {
-            nextEl: ".crop-next",
-            prevEl: ".crop-prev"
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2
-            },
-            1024: {
-                slidesPerView: 3
-            }
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const homeVideo = document.getElementById("home-hero-video");
+
+    if (homeVideo) {
+        homeVideo.addEventListener("error", () => {
+            homeVideo.hidden = true;
+        }, true);
+
+        if (prefersReducedMotion) {
+            homeVideo.pause();
+            homeVideo.hidden = true;
         }
-    });
+    }
+
+    if (typeof Swiper !== "undefined") {
+        new Swiper(".crops-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            speed: 700,
+            grabCursor: true,
+            navigation: {
+                nextEl: ".crop-next",
+                prevEl: ".crop-prev"
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                }
+            }
+        });
+    }
+
+    if (!prefersReducedMotion && typeof gsap !== "undefined") {
+        gsap.from(".hero-reveal", {
+            opacity: 0,
+            y: 55,
+            duration: 1,
+            stagger: 0.18,
+            ease: "power3.out"
+        });
+
+        if (typeof ScrollTrigger !== "undefined") {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.utils.toArray(".reveal-item").forEach((element) => {
+                gsap.from(element, {
+                    opacity: 0,
+                    y: 65,
+                    duration: 0.9,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 92%",
+                        once: true
+                    }
+                });
+            });
+        }
+    }
 </script>
 {% endblock %}

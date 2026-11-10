@@ -1,4 +1,3 @@
-
 {
   "al-ahsa": {
     "name": "الأحساء",
@@ -12,6 +11,9 @@
       "accent": "#C6A46C"
     },
     "hero_image": "regions/images/regions/al-ahsa.jpg",
+
+    "intro_video": "regions/videos/al-ahsa.mp4",
+
     "crops": [
       {
         "name": "التمور",
@@ -54,9 +56,12 @@
       "للأرز الحساوي مكانة خاصة في الموروث الغذائي المحلي."
     ],
     "gallery": [
-      "regions/images/regions/al-ahsa.jpg"
+      "regions/images/regions/al-ahsa.jpg",
+      "regions/images/regions/al-ahsa-2.jpg",
+      "regions/images/regions/al-ahsa-3.jpg",
+      "regions/images/regions/al-ahsa-4.jpg"
     ],
-    "video_id": ""
+    "video_id": "ZbgEkFkIeyw"
   },
   "taif": {
     "name": "الطائف",
@@ -70,6 +75,8 @@
       "accent": "#E9A6BE"
     },
     "hero_image": "regions/images/regions/taif.jpg",
+    "intro_video": "regions/videos/taif.mp4" ,
+
     "crops": [
       {
         "name": "الورد الطائفي",
@@ -112,9 +119,13 @@
       "تسهم طبيعة الطائف الجبلية في تنوع محاصيلها الزراعية."
     ],
     "gallery": [
-      "regions/images/regions/taif.jpg"
+      "regions/images/regions/taif.jpg",
+      "regions/images/regions/taif-2.jpg",
+      "regions/images/regions/taif-3.jpg",
+      "regions/images/regions/taif-4.jpg",
+      "regions/images/regions/taif-5.jpg"
     ],
-    "video_id": ""
+    "video_id": "kULU5zkXIVg"
   },
   "al-qassim": {
     "name": "القصيم",
@@ -128,6 +139,8 @@
       "accent": "#D7AC65"
     },
     "hero_image": "regions/images/regions/al-qassim.jpg",
+    "intro_video": "regions/videos/al-qassim.mp4" ,
+
     "crops": [
       {
         "name": "السكري",
@@ -170,9 +183,13 @@
       "تنتج مزارع النخيل منتجات غذائية متعددة إلى جانب التمور."
     ],
     "gallery": [
-      "regions/images/regions/al-qassim.jpg"
+      "regions/images/regions/al-qassim.jpg",
+      "regions/images/regions/al-qassim-2.jpg",
+      "regions/images/regions/al-qassim-3.jpg",
+      "regions/images/regions/al-qassim-4.jpg",
+      "regions/images/regions/al-qassim-5.jpg"
     ],
-    "video_id": ""
+    "video_id": "JMnR4ZAJtb4"
   },
   "al-jouf": {
     "name": "الجوف",
@@ -186,6 +203,8 @@
       "accent": "#B8A46C"
     },
     "hero_image": "regions/images/regions/al-jouf.jpg",
+    "intro_video": "regions/videos/al-jouf.mp4" ,
+
     "crops": [
       {
         "name": "الزيتون",
@@ -228,9 +247,13 @@
       "تساعد تقنيات الري والإنتاج الحديثة على إدارة المزارع بكفاءة."
     ],
     "gallery": [
-      "regions/images/regions/al-jouf.jpg"
+      "regions/images/regions/al-jouf.jpg",
+      "regions/images/regions/al-jouf-4.jpg",
+      "regions/images/regions/al-jouf-5.jpg",
+      "regions/images/regions/al-jouf-2.jpg",
+      "regions/images/regions/al-jouf-3.jpg"
     ],
-    "video_id": ""
+    "video_id": "FhhIgdS7SLI"
   },
   "abha": {
     "name": "أبها",
@@ -244,6 +267,8 @@
       "accent": "#D7A8EB"
     },
     "hero_image": "regions/images/regions/abha.jpg",
+    "intro_video": "regions/videos/abha.mp4" ,
+
     "crops": [
       {
         "name": "الجاكرندا",
@@ -290,8 +315,14 @@
       "يؤدي تنوع الارتفاعات والمناخ في عسير إلى تنوع النشاط الزراعي."
     ],
     "gallery": [
-      "regions/images/regions/abha.jpg"
+      "regions/images/regions/abha.jpg",
+      "regions/images/regions/abha-2.jpg",
+      "regions/images/regions/abha-3.jpg",
+      "regions/images/regions/abha-4.jpg",
+      "regions/images/regions/abha-5.jpg",
+      "regions/images/regions/abha-6.jpg",
+      "regions/images/regions/abha-7.jpg"
     ],
-    "video_id": ""
+    "video_id": "pDIitsTVC84"
   }
 }
