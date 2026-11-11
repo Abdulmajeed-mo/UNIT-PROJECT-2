@@ -1,5 +1,7 @@
-{% extends 'regions/base.html' %} {% load static %} {% block title %}{{
-region.name }} | أرضنا{% endblock %} {% block content %}
+{% extends 'regions/base.html' %}
+{% load static cloudinary_tags %}
+{% block title %}{{ region.name }} | أرضنا{% endblock %}
+{% block content %}
 
 <div
   id="region-intro"
@@ -11,7 +13,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
   <div class="absolute inset-0 overflow-hidden">
     <img
       id="intro-background"
-      src="{% static region.hero_image %}"
+      src="{{ region.hero_image|cloudinary_image }}"
       alt=""
       class="h-full w-full object-cover"
     />
@@ -24,7 +26,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
       loop
       playsinline
       preload="metadata"
-      poster="{% static region.hero_image %}"
+      poster="{{ region.hero_image|cloudinary_image }}"
       aria-hidden="true"
     >
       <source src="{% static region.intro_video %}" type="video/mp4" />
@@ -91,6 +93,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
 
 <main
   id="region-page"
+  data-region-slug="{{ region.slug }}"
   style="--primary: {{ region.colors.primary }}; --secondary: {{ region.colors.secondary }}; --accent: {{ region.colors.accent }};"
   class="overflow-hidden bg-[#F5F0E6] text-[#173C30] transition-colors duration-300 dark:bg-[#17231D] dark:text-[#F5F0E6]"
 >
@@ -98,7 +101,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
     class="relative flex min-h-[75vh] items-center justify-center overflow-hidden text-white"
   >
     <img
-      src="{% static region.hero_image %}"
+      src="{{ region.hero_image|cloudinary_image }}"
       alt="الطبيعة الزراعية في {{ region.name }}"
       class="absolute inset-0 h-full w-full object-cover"
     />
@@ -169,7 +172,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
 
       <div class="group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="{% static region.hero_image %}"
+          src="{{ region.hero_image|cloudinary_image }}"
           alt="{{ region.name }}"
           class="h-96 w-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
@@ -290,12 +293,13 @@ region.name }} | أرضنا{% endblock %} {% block content %}
       {% if region.gallery|length > 1 %}
       <div
         class="swiper region-gallery overflow-hidden rounded-3xl shadow-xl"
-        data-autoplay-delay="{% if region.slug == 'al-jouf' %}8000{% else %}4000{% endif %}" >
+        data-autoplay-delay="{% if region.slug == 'al-jouf' %}8000{% else %}4000{% endif %}"
+      >
         <div class="swiper-wrapper">
           {% for image in region.gallery %}
           <div class="swiper-slide">
             <img
-              src="{% static image %}"
+              src="{{ image|cloudinary_image }}"
               alt="صورة زراعية من {{ region.name }}"
               class="h-80 w-full bg-[#EAEFE8] p-2 object-contain md:h-[500px] dark:bg-[#203329]"
               loading="lazy"
@@ -308,7 +312,7 @@ region.name }} | أرضنا{% endblock %} {% block content %}
       </div>
       {% else %} {% for image in region.gallery %}
       <img
-        src="{% static image %}"
+        src="{{ image|cloudinary_image }}"
         alt="مشهد زراعي من {{ region.name }}"
         class="h-80 w-full rounded-3xl bg-[#EAEFE8] p-2 object-contain shadow-lg md:h-[500px] dark:bg-[#203329]"
         loading="lazy"
@@ -439,11 +443,13 @@ region.name }} | أرضنا{% endblock %} {% block content %}
       </a>
     </div>
   </section>
+
+  {% include 'regions/includes/region_links.html' %}
 </main>
 
-{% endblock %} 
+{% endblock %} {% block extra_js %}
 
-{% block extra_js %}
+<script src="{% static 'regions/js/components/region_identity.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <script src="{% static 'regions/js/region_detail.js' %}"></script>
 {% endblock %}

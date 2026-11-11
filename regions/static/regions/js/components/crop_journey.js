@@ -4,68 +4,126 @@
 
     if (!journey) return;
 
-    const buttons = [...journey.querySelectorAll(".journey-stage")];
-    const contents = [...journey.querySelectorAll(".journey-content")];
-    const artwork = [...journey.querySelectorAll(".journey-art-layer")];
+    const buttons = [
+        ...journey.querySelectorAll(".journey-stage")
+    ];
+
+    const contents = [
+        ...journey.querySelectorAll(".journey-content")
+    ];
+
+    const visuals = [
+        ...journey.querySelectorAll(".journey-visual-stage")
+    ];
+
     const progress = journey.querySelector("#journey-progress");
+    const progressTrack = journey.querySelector(
+        ".journey-progress-track"
+    );
+
     const counter = journey.querySelector("#journey-counter");
+    const visualCounter = journey.querySelector(
+        "#journey-visual-counter"
+    );
+
     const nextButton = journey.querySelector("#journey-next");
+    const prevButton = journey.querySelector("#journey-prev");
     const resetButton = journey.querySelector("#journey-reset");
 
-    if (!buttons.length) return;
+    if (
+        !buttons.length ||
+        !progress ||
+        !nextButton ||
+        !prevButton ||
+        !resetButton
+    ) {
+        return;
+    }
 
-    let current = 0;
+    const total = buttons.length;
+    let currentIndex = 0;
 
-    function selectStage(index) {
-        current = index;
+    function formatCount(value) {
+        return String(value).padStart(2, "0");
+    }
 
-        buttons.forEach((button, i) => {
-            button.setAttribute("aria-pressed", String(i === index));
+    function updateStage(index) {
+        if (index < 0 || index >= total) return;
+
+        currentIndex = index;
+
+        buttons.forEach((button, buttonIndex) => {
+            const active = buttonIndex === index;
+
+            button.setAttribute(
+                "aria-pressed",
+                String(active)
+            );
         });
 
-        contents.forEach((content, i) => {
-            content.classList.toggle("hidden", i !== index);
+        contents.forEach((content, contentIndex) => {
+            const active = contentIndex === index;
+
+            content.hidden = !active;
+            content.classList.toggle("hidden", !active);
         });
 
-        const stagePosition = buttons.length === 1
-            ? 1
-            : index / (buttons.length - 1);
+        visuals.forEach((visual, visualIndex) => {
+            const active = visualIndex === index;
 
-        const visualStage = Math.min(
-            3,
-            Math.round(stagePosition * 3)
+            visual.hidden = !active;
+            visual.classList.toggle("is-active", active);
+        });
+
+        const currentText = (
+            `${formatCount(index + 1)} / ${formatCount(total)}`
         );
 
-        artwork.forEach((layer, i) => {
-            layer.classList.toggle("is-active", i === visualStage);
-        });
+        if (counter) {
+            counter.textContent = currentText;
+        }
 
-        progress.style.width = `${stagePosition * 100}%`;
+        if (visualCounter) {
+            visualCounter.textContent = currentText;
+        }
 
-        counter.textContent = `${
-            String(index + 1).padStart(2, "0")
-        } / ${
-            String(buttons.length).padStart(2, "0")
-        }`;
+        progress.style.width = `${((index + 1) / total) * 100}%`;
 
-        nextButton.textContent = index === buttons.length - 1
+        if (progressTrack) {
+            progressTrack.setAttribute(
+                "aria-valuenow",
+                String(index + 1)
+            );
+        }
+
+        prevButton.disabled = index === 0;
+
+        nextButton.textContent = index === total - 1
             ? "العودة للبداية ↺"
             : "المرحلة التالية ←";
     }
 
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            selectStage(index);
+            updateStage(index);
         });
     });
 
     nextButton.addEventListener("click", () => {
-        selectStage((current + 1) % buttons.length);
+        const nextIndex = currentIndex === total - 1
+            ? 0
+            : currentIndex + 1;
+
+        updateStage(nextIndex);
+    });
+
+    prevButton.addEventListener("click", () => {
+        updateStage(currentIndex - 1);
     });
 
     resetButton.addEventListener("click", () => {
-        selectStage(0);
+        updateStage(0);
     });
 
-    selectStage(0);
+    updateStage(0);
 })();

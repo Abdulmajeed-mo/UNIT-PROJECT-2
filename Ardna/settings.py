@@ -125,3 +125,5 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+CLOUDINARY_IMAGE_URL = "https://res.cloudinary.com/aijaicb8/image/upload/"

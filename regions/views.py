@@ -1,11 +1,11 @@
 
 import json
 from pathlib import Path
-from django.shortcuts import redirect
-from django.views.decorators.http import require_POST
+
+from django.http import Http404, JsonResponse
+from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
-from django.http import Http404
-from django.shortcuts import render
+from django.views.decorators.http import require_POST
 
 
 DATA_FILE = Path(__file__).resolve().parent / "data" / "regions.json"
@@ -44,22 +44,29 @@ def region_detail(request, slug):
 
 def our_roots(request):
     return render(request, "regions/our_roots.html")
-  
+
+
 @require_POST
 def toggle_theme(request):
     current_theme = request.COOKIES.get("theme", "light")
     new_theme = "light" if current_theme == "dark" else "dark"
 
-    next_url = request.POST.get("next", "/")
+    is_ajax = request.headers.get("X-Requested-With") == "XMLHttpRequest"
 
-    if not url_has_allowed_host_and_scheme(
-        next_url,
-        allowed_hosts={request.get_host()},
-        require_https=request.is_secure(),
-    ):
-        next_url = "/"
+    if is_ajax:
+        response = JsonResponse({"theme": new_theme})
+    else:
+        next_url = request.POST.get("next", "/")
 
-    response = redirect(next_url)
+        if not url_has_allowed_host_and_scheme(
+            next_url,
+            allowed_hosts={request.get_host()},
+            require_https=request.is_secure(),
+        ):
+            next_url = "/"
+
+        response = redirect(next_url)
+
     response.set_cookie(
         "theme",
         new_theme,

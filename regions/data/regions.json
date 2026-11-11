@@ -1,3 +1,4 @@
+
 {
   "al-ahsa": {
     "name": "الأحساء",
@@ -11,9 +12,7 @@
       "accent": "#C6A46C"
     },
     "hero_image": "regions/images/regions/al-ahsa.jpg",
-
     "intro_video": "regions/videos/al-ahsa.mp4",
-
     "crops": [
       {
         "name": "التمور",
@@ -61,7 +60,21 @@
       "regions/images/regions/al-ahsa-3.jpg",
       "regions/images/regions/al-ahsa-4.jpg"
     ],
-    "video_id": "ZbgEkFkIeyw"
+    "video_id": "ZbgEkFkIeyw",
+    "links": [
+      {
+        "title": "واحة الأحساء في التراث العالمي",
+        "description": "اكتشف مكانة الواحة الزراعية وتاريخها من خلال موقع اليونسكو.",
+        "category": "التراث العالمي",
+        "url": "https://whc.unesco.org/ar/list/1563"
+      },
+      {
+        "title": "المهرجانات الزراعية السعودية",
+        "description": "تعرف على المهرجانات الزراعية والتراثية، ومنها فعاليات النخيل والتمور في الأحساء.",
+        "category": "مهرجانات زراعية",
+        "url": "https://saudipedia.com/قائمة-عشرة-مهرجانات-سعودية"
+      }
+    ]
   },
   "taif": {
     "name": "الطائف",
@@ -75,8 +88,7 @@
       "accent": "#E9A6BE"
     },
     "hero_image": "regions/images/regions/taif.jpg",
-    "intro_video": "regions/videos/taif.mp4" ,
-
+    "intro_video": "regions/videos/taif.mp4",
     "crops": [
       {
         "name": "الورد الطائفي",
@@ -125,7 +137,21 @@
       "regions/images/regions/taif-4.jpg",
       "regions/images/regions/taif-5.jpg"
     ],
-    "video_id": "kULU5zkXIVg"
+    "video_id": "kULU5zkXIVg",
+    "links": [
+      {
+        "title": "رحلة الورد الطائفي",
+        "description": "تعرف على زراعة الورد وقطفه وطرق تقطيره وإنتاج العطور وماء الورد.",
+        "category": "تجربة زراعية",
+        "url": "https://www.visitsaudi.com/en/taif/stories/rosewater-in-saudi-arabia"
+      },
+      {
+        "title": "مزرعة الورد الطائفي",
+        "description": "استكشف تجربة زيارة إحدى مزارع الورد والتعرف على هذا التراث الزراعي.",
+        "category": "زيارة مزرعة",
+        "url": "https://www.visitsaudi.com/ar/taif/attractions/mishaal-al-sufyan-rose-farm"
+      }
+    ]
   },
   "al-qassim": {
     "name": "القصيم",
@@ -139,8 +165,7 @@
       "accent": "#D7AC65"
     },
     "hero_image": "regions/images/regions/al-qassim.jpg",
-    "intro_video": "regions/videos/al-qassim.mp4" ,
-
+    "intro_video": "regions/videos/al-qassim.mp4",
     "crops": [
       {
         "name": "السكري",
@@ -189,7 +214,21 @@
       "regions/images/regions/al-qassim-4.jpg",
       "regions/images/regions/al-qassim-5.jpg"
     ],
-    "video_id": "JMnR4ZAJtb4"
+    "video_id": "JMnR4ZAJtb4",
+    "links": [
+      {
+        "title": "كرنفال بريدة للتمور",
+        "description": "تعرف على أحد أبرز مواسم وأسواق التمور في المملكة العربية السعودية.",
+        "category": "مهرجان زراعي",
+        "url": "https://saudipedia.com/كرنفال-بريدة-للتمور"
+      },
+      {
+        "title": "أصناف تمور القصيم",
+        "description": "اكتشف أشهر أصناف التمور المرتبطة بالقصيم، ومنها تمر السكري.",
+        "category": "معرفة زراعية",
+        "url": "https://saudipedia.com/en/what-are-the-most-common-types-of-dates-in-qassim-province"
+      }
+    ]
   },
   "al-jouf": {
     "name": "الجوف",
@@ -203,8 +242,7 @@
       "accent": "#B8A46C"
     },
     "hero_image": "regions/images/regions/al-jouf.jpg",
-    "intro_video": "regions/videos/al-jouf.mp4" ,
-
+    "intro_video": "regions/videos/al-jouf.mp4",
     "crops": [
       {
         "name": "الزيتون",
@@ -253,7 +291,21 @@
       "regions/images/regions/al-jouf-2.jpg",
       "regions/images/regions/al-jouf-3.jpg"
     ],
-    "video_id": "FhhIgdS7SLI"
+    "video_id": "FhhIgdS7SLI",
+    "links": [
+      {
+        "title": "مهرجان زيتون الجوف الدولي",
+        "description": "تعرف على المهرجان ودوره في إبراز الزيتون المحلي ومنتجاته.",
+        "category": "مهرجان زراعي",
+        "url": "https://saudipedia.com/مهرجان-زيتون-الجوف-الدولي"
+      },
+      {
+        "title": "زراعة الزيتون في السعودية",
+        "description": "اكتشف زراعة الزيتون في المملكة وطرق إنتاجه واستخداماته.",
+        "category": "معرفة زراعية",
+        "url": "https://saudipedia.com/en/olive-cultivation-in-saudi-arabia"
+      }
+    ]
   },
   "abha": {
     "name": "أبها",
@@ -267,8 +319,7 @@
       "accent": "#D7A8EB"
     },
     "hero_image": "regions/images/regions/abha.jpg",
-    "intro_video": "regions/videos/abha.mp4" ,
-
+    "intro_video": "regions/videos/abha.mp4",
     "crops": [
       {
         "name": "الجاكرندا",
@@ -323,6 +374,20 @@
       "regions/images/regions/abha-6.jpg",
       "regions/images/regions/abha-7.jpg"
     ],
-    "video_id": "pDIitsTVC84"
+    "video_id": "pDIitsTVC84",
+    "links": [
+      {
+        "title": "اكتشف عسير وأبها",
+        "description": "تعرف على الطبيعة الجبلية والوجهات السياحية والفعاليات في عسير.",
+        "category": "الطبيعة والسياحة",
+        "url": "https://www.visitsaudi.com/ar/see-do/destinations/abha"
+      },
+      {
+        "title": "الزراعة في السعودية",
+        "description": "استكشف التنوع الزراعي والمحاصيل والأنشطة الزراعية في المملكة.",
+        "category": "معرفة زراعية",
+        "url": "https://saudipedia.com/en/agriculture-in-saudi-arabia"
+      }
+    ]
   }
 }

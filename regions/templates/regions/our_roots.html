@@ -1,569 +1,263 @@
 
 {% extends 'regions/base.html' %}
-{% load static %}
-
-{% block title %}مزرعتنا في عنيكر | أرضنا{% endblock %}
+{% load static cloudinary_tags %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'regions/css/pages/our_roots.css' %}">
 
-
-
-<main class="roots-page overflow-hidden bg-[#F5F0E6] dark:bg-[#17231D]">
-
-    <section class="relative isolate flex min-h-[95svh] items-center overflow-hidden bg-[#10251C] text-white">
-
-        <div class="roots-hero-media absolute inset-0 -z-10">
-            <img
-                src="{% static 'regions/images/farm/mango.jpg' %}"
-                alt="أشجار المانجو في مزرعتنا"
-                class="h-full w-full object-cover"
-                fetchpriority="high"
-            >
+<main class="roots-page" dir="rtl" id="roots-top">
+    <section class="roots-hero" aria-labelledby="roots-hero-title">
+        <div class="roots-hero-image" style="background-image: url('{{ 'farm-sunset.png'|cloudinary_image }}')"></div>
+        <div class="roots-hero-shade"></div>
+        <div class="roots-container roots-hero-content">
+            <span class="roots-eyebrow roots-hero-eyebrow">أرضنا | حكاية من عنيكر</span>
+            <h1 id="roots-hero-title">مزرعتنا... <span>حكاية إنسان وأرض</span></h1>
+            <p>قبل أن تُثمر الأشجار، كانت هناك رؤية. رحلة بدأت بشغف الوالد محمد مصطفى الحسني، وتحولت على مدى خمسة وعشرين عامًا إلى أرض تنبض بالحياة.</p>
+            <a class="roots-button roots-button-white" href="#father-story">اكتشف الحكاية <span aria-hidden="true">↓</span></a>
         </div>
-
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#102019]/95 via-[#102019]/65 to-[#102019]/30"></div>
-
-        <div class="pointer-events-none absolute inset-5 rounded-[2rem] border border-white/15 md:inset-10"></div>
-
-        <div class="pointer-events-none absolute right-10 top-28 h-28 w-28 rounded-full border border-[#C6A46C]/30 md:right-20 md:h-40 md:w-40"></div>
-
-        <div class="relative mx-auto w-full max-w-7xl px-7 pb-28 pt-40 md:px-12">
-
-            <div class="max-w-5xl">
-
-                <div class="roots-hero-reveal mb-7 inline-flex items-center gap-3">
-                    <span class="h-px w-10 bg-[#C6A46C]"></span>
-                    <span class="text-sm font-semibold tracking-wider text-[#E5D2A7]">
-                        القنفذة / قرية عنيكر
-                    </span>
-                </div>
-
-                <h1 class="roots-hero-reveal text-[clamp(3.4rem,9vw,9rem)] font-black leading-[1.13]">
-                    من عنيكر
-                    <span class="block text-[#E5D2A7]">
-                        بدأت الحكاية.
-                    </span>
-                </h1>
-
-                <p class="roots-hero-reveal mt-9 max-w-2xl text-lg leading-10 text-white/85 md:text-2xl">
-                    بين أشجار المانجو والليمون وألوان الزهور،
-                    بدأت فكرة أرضنا من مكان قريب إلى القلب.
-                </p>
-
-                <div class="roots-hero-reveal mt-11 flex flex-wrap gap-4">
-                    <a
-                        href="#our-story"
-                        class="rounded-full bg-[#C6A46C] px-9 py-4 font-bold text-[#173C30] transition hover:-translate-y-1 hover:bg-[#E5D2A7]"
-                    >
-                        اكتشف حكايتنا ↙
-                    </a>
-
-                    <a
-                        href="#farm-gallery"
-                        class="rounded-full border border-white/40 bg-white/10 px-9 py-4 font-bold text-white backdrop-blur-md transition hover:-translate-y-1 hover:bg-white hover:text-[#173C30]"
-                    >
-                        شاهد المزرعة ←
-                    </a>
-                </div>
-            </div>
-
-            <div class="roots-hero-reveal mt-20 grid max-w-xl grid-cols-3 gap-5 border-t border-white/25 pt-8">
-                <div>
-                    <span class="block text-3xl font-bold text-[#E5D2A7]">02</span>
-                    <span class="mt-2 block text-sm text-white/75">محصولان بارزان</span>
-                </div>
-
-                <div>
-                    <span class="block text-3xl font-bold text-[#E5D2A7]">05</span>
-                    <span class="mt-2 block text-sm text-white/75">أنواع زهور</span>
-                </div>
-
-                <div>
-                    <span class="block text-3xl font-bold text-[#E5D2A7]">01</span>
-                    <span class="mt-2 block text-sm text-white/75">مصدر إلهام</span>
-                </div>
-            </div>
-        </div>
-
-        <a
-            href="#our-story"
-            class="absolute bottom-8 left-8 z-10 flex items-center gap-4 text-sm text-white/80 md:left-14"
-        >
-            <span class="roots-scroll-indicator"></span>
-            انزل لتبدأ الرحلة
-        </a>
+        <div class="roots-hero-foot">القنفذة · قرية عنيكر</div>
     </section>
 
-
-    <section id="our-story" class="scroll-mt-24 px-6 py-28 md:py-36">
-
-        <div class="mx-auto max-w-7xl">
-
-            <div class="roots-reveal mb-20 max-w-4xl">
-                <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
-                    جذور الحكاية
-                </span>
-
-                <h2 class="editorial-heading mt-7 text-5xl font-bold text-[#173C30] md:text-7xl dark:text-[#F5F0E6]">
-                    ليست مجرد مزرعة.
-                    <span class="block text-[#66876A] dark:text-[#C6A46C]">
-                        بل بداية فكرة.
-                    </span>
-                </h2>
+    <section class="roots-section roots-father-section" id="father-story" aria-labelledby="father-title">
+        <div class="roots-container roots-father-layout">
+            <div class="roots-father-photo" data-roots-reveal>
+                <img src="{{ 'father-vision.png'|cloudinary_image }}" alt="الوالد محمد مصطفى الحسني يتأمل مزرعة المانجو" loading="lazy">
+                <span class="roots-photo-caption">نظرة الوالد إلى الأرض التي أحبها</span>
             </div>
-
-            <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
-
-                <div class="roots-reveal relative">
-                    <span class="pointer-events-none absolute -top-20 right-0 font-serif text-[10rem] font-black leading-none text-[#173C30]/5 dark:text-white/5">
-                        01
-                    </span>
-
-                    <div class="relative">
-
-                        <span class="text-sm font-bold text-[#66876A] dark:text-[#AFC7AD]">
-                            أرض تجمع الذكريات
-                        </span>
-
-                        <h3 class="mt-6 text-4xl font-bold leading-snug text-[#173C30] dark:text-[#F5F0E6]">
-                            مزرعة صنعت الإلهام
-                        </h3>
-
-                        <p class="mt-8 text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
-                            في قرية عنيكر بمحافظة القنفذة تقع مزرعة والدي،
-                            حيث تنمو أشجار المانجو والليمون وتزدهر أنواع
-                            متعددة من الورود والنباتات المزهرة.
-                        </p>
-
-                        <p class="mt-6 text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
-                            كان اهتمام والدي بالزراعة وارتباطنا بهذه المزرعة
-                            من أسباب اختياري للزراعة السعودية موضوعًا لمشروع أرضنا.
-                            ومن هذه التجربة الشخصية، جاءت فكرة التعرف
-                            على التنوع الزراعي في مختلف مناطق المملكة.
-                        </p>
-
-                        <div class="mt-10 border-r-4 border-[#C6A46C] bg-white p-7 shadow-sm dark:bg-[#26382E]">
-                            <p class="text-xl font-semibold leading-10 text-[#173C30] dark:text-[#F5F0E6]">
-                                «من مكان قريب إلى القلب، بدأت رحلة لاكتشاف خيرات وطن بأكمله.»
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="roots-reveal relative">
-                    <div class="overflow-hidden rounded-[2rem] shadow-2xl">
-                        <img
-                            src="{% static 'regions/images/farm/lemon.jpg' %}"
-                            alt="الليمون في مزرعتنا"
-                            class="roots-story-image h-[450px] w-full object-cover md:h-[620px]"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <div class="absolute -bottom-7 left-4 rounded-2xl bg-[#C6A46C] px-7 py-5 text-[#173C30] shadow-xl md:-left-7">
-                        <span class="block text-xs font-bold">OUR ROOTS</span>
-                        <strong class="mt-2 block text-2xl">عنيكر، القنفذة</strong>
-                    </div>
+            <div class="roots-father-copy" data-roots-reveal>
+                <span class="roots-eyebrow">البداية كانت حلمًا</span>
+                <h2 id="father-title">رؤية الوالد <span>محمد مصطفى الحسني</span></h2>
+                <div class="roots-father-role">معلم متقاعد · شغوف بالزراعة منذ القدم</div>
+                <p>لم يرَ الوالد في هذه الأرض مجرد مساحة قاحلة، بل رأى فيها مستقبلًا أخضر. ومن شغفه القديم بالزراعة، بدأ يزرع ويعتني ويصبر، حتى أصبحت الأرض جزءًا من حكاية العائلة.</p>
+                <p>على مدى خمسة وعشرين عامًا، تغيّر المشهد شيئًا فشيئًا؛ نمت الأشجار، وأثمر المانجو والليمون، وتفتحت الأزهار، ووجدت الطيور في الأغصان موطنًا لها.</p>
+                <blockquote class="roots-father-quote">«من أرضٍ صامتة... إلى حياةٍ تنمو كل يوم.»</blockquote>
+                <div class="roots-alqatt" aria-label="زخرفة مستوحاة من فن القط العسيري" role="img">
+                    <i></i><i></i><i></i><i></i>
+                    <i></i><i></i><i></i><i></i>
+                    <i></i><i></i><i></i><i></i>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section id="farm-crops" class="scroll-mt-24 bg-[#EAEFE8] px-6 py-28 dark:bg-[#203329]">
-
-        <div class="mx-auto max-w-7xl">
-
-            <div class="roots-reveal mb-14">
-                <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
-                    من خيرات مزرعتنا
-                </span>
-
-                <h2 class="editorial-heading mt-6 text-5xl font-bold text-[#173C30] md:text-7xl dark:text-[#F5F0E6]">
-                    ثمار تنمو
-                    <span class="block text-[#66876A] dark:text-[#C6A46C]">
-                        بالعناية.
-                    </span>
-                </h2>
-
-                <p class="mt-6 max-w-2xl text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
-                    من المانجو إلى الليمون، لكل شجرة دور في حكاية مزرعتنا.
-                    اختر المحصول لتتعرف عليه.
-                </p>
+    <section class="roots-section roots-journey-section" id="farm-journey" aria-labelledby="journey-title">
+        <div class="roots-container">
+            <div class="roots-section-heading" data-roots-reveal>
+                <span class="roots-eyebrow">25 عامًا من العناية والصبر</span>
+                <h2 id="journey-title">من أرض قاحلة إلى <span>أرض تنبض بالحياة</span></h2>
+                <p>اضغط على إحدى المراحل لتشاهد كيف تغيّر المشهد، خطوة بعد خطوة.</p>
             </div>
 
-            <div class="roots-reveal mb-8 flex flex-wrap gap-3" role="tablist" aria-label="محاصيل مزرعتنا">
+            <div class="roots-journey" data-roots-reveal>
+                <div class="roots-journey-view" id="roots-journey-view" aria-live="polite">
+                    <img
+                        class="roots-journey-photo is-current"
+                        id="roots-journey-current"
+                        src="{{ 'farm-before.png'|cloudinary_image }}"
+                        alt="الأرض قبل الزراعة: تربة جافة وشجيرات قليلة وتل رملي في الخلفية"
+                    >
+                    <img class="roots-journey-photo" id="roots-journey-next" alt="" aria-hidden="true">
+                    <span class="roots-journey-stamp" id="roots-journey-stamp">البداية</span>
+                    <span class="roots-journey-counter" id="roots-journey-counter">01 / 03</span>
+                </div>
 
+                <div class="roots-journey-panel">
+                    <span class="roots-eyebrow">رحلة الأرض</span>
+                    <h3 id="roots-journey-stage-title">حين كانت الأرض تنتظر</h3>
+                    <p id="roots-journey-stage-description">أرض شبه قاحلة، لا يكسوها إلا القليل من النباتات الطبيعية. هنا بدأت الرؤية الأولى.</p>
+
+                    <div class="roots-journey-options" role="group" aria-label="اختر مرحلة تطور المزرعة">
+                        <button type="button" class="roots-stage is-active" data-stage="0" aria-pressed="true">
+                            <span class="roots-stage-number">01</span>
+                            <span>
+                                <strong>البداية</strong>
+                                <small>أرض قاحلة</small>
+                            </span>
+                        </button>
+
+                        <button type="button" class="roots-stage" data-stage="1" aria-pressed="false">
+                            <span class="roots-stage-number">02</span>
+                            <span>
+                                <strong>التحوّل</strong>
+                                <small>البذور الأولى</small>
+                            </span>
+                        </button>
+
+                        <button type="button" class="roots-stage" data-stage="2" aria-pressed="false">
+                            <span class="roots-stage-number">03</span>
+                            <span>
+                                <strong>الحاضر</strong>
+                                <small>أرض تنبض بالحياة</small>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="roots-journey-navigation">
+                        <button type="button" id="roots-journey-prev" aria-label="المرحلة السابقة">→</button>
+                        <button type="button" id="roots-journey-next-button" aria-label="المرحلة التالية">←</button>
+                    </div>
+
+                    <p class="roots-journey-note">الصور تصوّر المراحل فنيًا، وليست صورًا تاريخية موثّقة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roots-section roots-crops-section" id="farm-crops" aria-labelledby="crops-title">
+        <div class="roots-container">
+            <div class="roots-section-heading" data-roots-reveal>
+                <span class="roots-eyebrow">ثمار الأرض</span>
+                <h2 id="crops-title">من رعاية الوالد... <span>إلى ثمار المزرعة</span></h2>
+                <p>المانجو والليمون من ثمار الأرض التي تغيّرت بالعناية والزراعة.</p>
+            </div>
+
+            <div class="roots-crop-grid">
+                <article class="roots-crop-card" data-roots-reveal>
+                    <img src="{{ 'farm-mango.png'|cloudinary_image }}" alt="أشجار المانجو في المزرعة" loading="lazy">
+                    <div>
+                        <span>01 · من أشجارنا</span>
+                        <h3>المانجو</h3>
+                        <p>أغصان مورقة وثمار تُجسّد سنوات من الصبر والاهتمام.</p>
+                    </div>
+                </article>
+
+                <article class="roots-crop-card" data-roots-reveal>
+                    <img src="{{ 'farm-lemon.png'|cloudinary_image }}" alt="أوراق وأزهار الليمون في المزرعة" loading="lazy">
+                    <div>
+                        <span>02 · من أشجارنا</span>
+                        <h3>الليمون</h3>
+                        <p>أوراق خضراء، وأزهار صغيرة، وثمر يضيف للمزرعة نكهته الخاصة.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="roots-section roots-gallery-section" id="farm-gallery" aria-labelledby="gallery-title">
+        <div class="roots-container">
+            <div class="roots-section-heading" data-roots-reveal>
+                <span class="roots-eyebrow">لحظات حقيقية من مزرعتنا</span>
+                <h2 id="gallery-title">مشاهد من <span>المزرعة</span></h2>
+                <p>صور من مزرعتنا تحكي تفاصيلها من الزهور إلى الغروب.</p>
+            </div>
+
+            <div class="roots-photo-grid">
                 <button
-                    id="roots-tab-mango"
                     type="button"
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="roots-panel-mango"
-                    data-roots-crop="mango"
-                    class="roots-crop-tab rounded-full border border-[#173C30]/15 bg-white px-8 py-4 font-bold text-[#173C30] dark:border-white/15 dark:bg-[#26382E] dark:text-white"
+                    class="roots-gallery-item roots-gallery-wide"
+                    data-lightbox-src="{{ 'farm-sunset.png'|cloudinary_image }}"
+                    data-lightbox-alt="غروب الشمس بين أشجار المزرعة"
                 >
-                    🥭 المانجو
+                    <img src="{{ 'farm-sunset.png'|cloudinary_image }}" alt="غروب الشمس بين أشجار المزرعة" loading="lazy">
+                    <span>غروب المزرعة</span>
                 </button>
 
                 <button
-                    id="roots-tab-lemon"
                     type="button"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="roots-panel-lemon"
-                    data-roots-crop="lemon"
-                    class="roots-crop-tab rounded-full border border-[#173C30]/15 bg-white px-8 py-4 font-bold text-[#173C30] dark:border-white/15 dark:bg-[#26382E] dark:text-white"
+                    class="roots-gallery-item"
+                    data-lightbox-src="{{ 'farm-flowers.png'|cloudinary_image }}"
+                    data-lightbox-alt="أزهار بنفسجية من المزرعة"
                 >
-                    🍋 الليمون
+                    <img src="{{ 'farm-flowers.png'|cloudinary_image }}" alt="أزهار بنفسجية من المزرعة" loading="lazy">
+                    <span>أزهارنا</span>
                 </button>
 
-            </div>
-
-            <div class="roots-reveal overflow-hidden rounded-[2rem] bg-white shadow-xl dark:bg-[#26382E]">
-
-                <article
-                    id="roots-panel-mango"
-                    role="tabpanel"
-                    aria-labelledby="roots-tab-mango"
-                    data-roots-panel="mango"
-                    class="roots-crop-panel grid lg:grid-cols-2"
+                <button
+                    type="button"
+                    class="roots-gallery-item"
+                    data-lightbox-src="{{ 'farm-mango.png'|cloudinary_image }}"
+                    data-lightbox-alt="شجر المانجو في مزرعتنا"
                 >
-                    <div class="relative min-h-[350px] overflow-hidden md:min-h-[480px]">
-                        <img
-                            src="{% static 'regions/images/farm/mango.jpg' %}"
-                            alt="أشجار المانجو في مزرعتنا"
-                            class="absolute inset-0 h-full w-full object-cover"
-                            loading="lazy"
-                        >
-
-                        <span class="absolute right-6 top-6 rounded-full bg-[#C6A46C] px-5 py-3 text-sm font-bold text-[#173C30]">
-                            محصولنا الأبرز
-                        </span>
-                    </div>
-
-                    <div class="flex flex-col justify-center p-8 md:p-12">
-                        <span class="text-sm font-bold text-[#D28A35] dark:text-[#E9B76A]">
-                            01 / من خيرات المزرعة
-                        </span>
-
-                        <h3 class="mt-5 text-5xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                            المانجو
-                        </h3>
-
-                        <p class="mt-8 text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
-                            تتميز مزرعتنا بأشجار المانجو،
-                            وهي من أبرز المحاصيل التي نعتز بزراعتها.
-                            وتحتاج أشجارها إلى العناية والري المناسب
-                            للحصول على ثمار جيدة.
-                        </p>
-
-                        <div class="mt-10 flex flex-wrap gap-3">
-                            <span class="rounded-full bg-[#F5F0E6] px-5 py-3 text-sm font-semibold text-[#173C30] dark:bg-[#35483B] dark:text-white">
-                                أشجار مثمرة
-                            </span>
-                            <span class="rounded-full bg-[#F5F0E6] px-5 py-3 text-sm font-semibold text-[#173C30] dark:bg-[#35483B] dark:text-white">
-                                عناية مستمرة
-                            </span>
-                        </div>
-                    </div>
-                </article>
-
-                <article
-                    id="roots-panel-lemon"
-                    role="tabpanel"
-                    aria-labelledby="roots-tab-lemon"
-                    data-roots-panel="lemon"
-                    class="roots-crop-panel grid lg:grid-cols-2"
-                    hidden
-                >
-                    <div class="relative min-h-[350px] overflow-hidden md:min-h-[480px]">
-                        <img
-                            src="{% static 'regions/images/farm/lemon.jpg' %}"
-                            alt="أشجار الليمون في مزرعتنا"
-                            class="absolute inset-0 h-full w-full object-cover"
-                            loading="lazy"
-                        >
-
-                        <span class="absolute right-6 top-6 rounded-full bg-[#C6D77D] px-5 py-3 text-sm font-bold text-[#173C30]">
-                            من أشجار الحمضيات
-                        </span>
-                    </div>
-
-                    <div class="flex flex-col justify-center p-8 md:p-12">
-                        <span class="text-sm font-bold text-[#7A9442] dark:text-[#C0D78A]">
-                            02 / من خيرات المزرعة
-                        </span>
-
-                        <h3 class="mt-5 text-5xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
-                            الليمون
-                        </h3>
-
-                        <p class="mt-8 text-lg leading-10 text-[#56685D] dark:text-[#C1D0C4]">
-                            إلى جانب المانجو، تضم المزرعة أشجار الليمون،
-                            التي تتميز بثمارها الحمضية واستخداماتها
-                            الغذائية المتنوعة.
-                        </p>
-
-                        <div class="mt-10 flex flex-wrap gap-3">
-                            <span class="rounded-full bg-[#F5F0E6] px-5 py-3 text-sm font-semibold text-[#173C30] dark:bg-[#35483B] dark:text-white">
-                                حمضيات
-                            </span>
-                            <span class="rounded-full bg-[#F5F0E6] px-5 py-3 text-sm font-semibold text-[#173C30] dark:bg-[#35483B] dark:text-white">
-                                ثمار متعددة الاستخدام
-                            </span>
-                        </div>
-                    </div>
-                </article>
-
+                    <img src="{{ 'farm-mango.png'|cloudinary_image }}" alt="شجر المانجو في مزرعتنا" loading="lazy">
+                    <span>أشجار المانجو</span>
+                </button>
             </div>
         </div>
     </section>
 
-
-    <section id="farm-flowers" class="scroll-mt-24 px-6 py-28 dark:bg-[#17231D]">
-
-        <div class="mx-auto max-w-7xl">
-
-            <div class="roots-reveal mb-14 max-w-4xl">
-                <span class="section-eyebrow text-[#A76B89] dark:text-[#E1A8C4]">
-                    ألوان من الطبيعة
-                </span>
-
-                <h2 class="editorial-heading mt-6 text-5xl font-bold text-[#173C30] md:text-7xl dark:text-[#F5F0E6]">
-                    حديقة صغيرة،
-                    <span class="block text-[#A76B89] dark:text-[#E1A8C4]">
-                        بألوان كثيرة.
-                    </span>
-                </h2>
-
-                <p class="mt-7 max-w-2xl text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
-                    لا تقتصر مزرعتنا على الأشجار المثمرة؛
-                    بل تضم مجموعة من النباتات المزهرة التي تضيف
-                    إلى المكان ألوانًا وتنوعًا.
-                </p>
+    <section class="roots-section roots-flowers-section" id="farm-flowers" aria-labelledby="flowers-title">
+        <div class="roots-container">
+            <div class="roots-section-heading" data-roots-reveal>
+                <span class="roots-eyebrow">وفي نهاية الرحلة... تزهر الحكاية</span>
+                <h2 id="flowers-title">حديقة <span>الألوان والورود</span></h2>
+                <p>معرض تفاعلي للأزهار والنباتات التي اخترناها لهذا القسم. انقر على أي صورة لتكبيرها.</p>
             </div>
 
-            <svg aria-hidden="true" class="absolute h-0 w-0 overflow-hidden">
-                <symbol id="roots-flower-shape" viewBox="0 0 160 160">
-                    <path d="M80 92 V145" stroke="#46794E" stroke-width="6" stroke-linecap="round"/>
-                    <path d="M80 119 Q49 91 34 113 Q48 132 80 119Z" fill="#5FA66C"/>
-                    <path d="M80 131 Q108 99 126 115 Q111 138 80 131Z" fill="#488C5C"/>
-                    <g fill="currentColor" opacity=".9">
-                        <ellipse cx="80" cy="48" rx="19" ry="33"/>
-                        <ellipse cx="80" cy="48" rx="19" ry="33" transform="rotate(60 80 75)"/>
-                        <ellipse cx="80" cy="48" rx="19" ry="33" transform="rotate(120 80 75)"/>
-                        <ellipse cx="80" cy="48" rx="19" ry="33" transform="rotate(180 80 75)"/>
-                        <ellipse cx="80" cy="48" rx="19" ry="33" transform="rotate(240 80 75)"/>
-                        <ellipse cx="80" cy="48" rx="19" ry="33" transform="rotate(300 80 75)"/>
-                    </g>
-                    <circle cx="80" cy="75" r="18" fill="#C6A46C"/>
-                    <circle cx="80" cy="75" r="8" fill="#815D35" opacity=".6"/>
-                </symbol>
-            </svg>
+            <div class="roots-flower-grid">
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'african-tulip.avif'|cloudinary_image }}" data-lightbox-alt="التوليب الأفريقي">
+                    <img src="{{ 'african-tulip.avif'|cloudinary_image }}" alt="التوليب الأفريقي" loading="lazy">
+                    <span>التوليب الأفريقي</span>
+                </button>
 
-            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'arabian-jasmine.avif'|cloudinary_image }}" data-lightbox-alt="الفل العربي">
+                    <img src="{{ 'arabian-jasmine.avif'|cloudinary_image }}" alt="الفل العربي" loading="lazy">
+                    <span>الفل العربي</span>
+                </button>
 
-                <article class="roots-flower-card roots-reveal rounded-[2rem] border border-pink-200 bg-pink-50 p-8 text-pink-950 dark:border-pink-400/20 dark:bg-[#382B36] dark:text-pink-100 lg:col-span-3">
-                    <svg viewBox="0 0 160 160" class="roots-flower-decoration mb-5 h-36 w-36 text-white drop-shadow-lg" aria-hidden="true">
-                        <use href="#roots-flower-shape"></use>
-                    </svg>
-                    <span class="text-xs font-bold text-pink-700 dark:text-pink-300">01 / أزهار عطرية</span>
-                    <h3 class="mt-3 text-3xl font-bold">الياسمين الأبيض</h3>
-                    <p class="mt-4 leading-9 text-pink-900/75 dark:text-pink-100/80">
-                        أزهار بيضاء رقيقة تتميز بجمالها ورائحتها العطرية.
-                    </p>
-                </article>
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'bougainvillea.avif'|cloudinary_image }}" data-lightbox-alt="الجهنمية">
+                    <img src="{{ 'bougainvillea.avif'|cloudinary_image }}" alt="الجهنمية" loading="lazy">
+                    <span>الجهنمية</span>
+                </button>
 
-                <article class="roots-flower-card roots-reveal rounded-[2rem] border border-fuchsia-200 bg-fuchsia-50 p-8 text-fuchsia-950 dark:border-fuchsia-400/20 dark:bg-[#392A3A] dark:text-fuchsia-100 lg:col-span-3">
-                    <svg viewBox="0 0 160 160" class="roots-flower-decoration mb-5 h-36 w-36 text-fuchsia-500 drop-shadow-lg" aria-hidden="true">
-                        <use href="#roots-flower-shape"></use>
-                    </svg>
-                    <span class="text-xs font-bold text-fuchsia-700 dark:text-fuchsia-300">02 / نباتات زينة</span>
-                    <h3 class="mt-3 text-3xl font-bold">الجهنمية</h3>
-                    <p class="mt-4 leading-9 text-fuchsia-900/75 dark:text-fuchsia-100/80">
-                        نبات زينة يتميز بألوانه الزاهية وقدرته على النمو في البيئات الدافئة.
-                    </p>
-                </article>
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'damask-rose.avif'|cloudinary_image }}" data-lightbox-alt="الورد الجوري">
+                    <img src="{{ 'damask-rose.avif'|cloudinary_image }}" alt="الورد الجوري" loading="lazy">
+                    <span>الورد الجوري</span>
+                </button>
 
-                <article class="roots-flower-card roots-reveal rounded-[2rem] border border-violet-200 bg-violet-50 p-7 text-violet-950 dark:border-violet-400/20 dark:bg-[#302B40] dark:text-violet-100 lg:col-span-2">
-                    <svg viewBox="0 0 160 160" class="roots-flower-decoration mb-4 h-28 w-28 text-violet-500" aria-hidden="true">
-                        <use href="#roots-flower-shape"></use>
-                    </svg>
-                    <h3 class="text-2xl font-bold">الخزامى الأفريقية</h3>
-                    <p class="mt-4 leading-8 text-violet-900/75 dark:text-violet-100/80">
-                        نبات مزهر يضيف درجات بنفسجية جميلة إلى الحديقة.
-                    </p>
-                </article>
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'day-blooming-cestrum.avif'|cloudinary_image }}" data-lightbox-alt="ملكة النهار">
+                    <img src="{{ 'day-blooming-cestrum.avif'|cloudinary_image }}" alt="ملكة النهار" loading="lazy">
+                    <span>ملكة النهار</span>
+                </button>
 
-                <article class="roots-flower-card roots-reveal rounded-[2rem] border border-rose-200 bg-rose-50 p-7 text-rose-950 dark:border-rose-400/20 dark:bg-[#3B2C33] dark:text-rose-100 lg:col-span-2">
-                    <svg viewBox="0 0 160 160" class="roots-flower-decoration mb-4 h-28 w-28 text-rose-400" aria-hidden="true">
-                        <use href="#roots-flower-shape"></use>
-                    </svg>
-                    <h3 class="text-2xl font-bold">كف مريم</h3>
-                    <p class="mt-4 leading-8 text-rose-900/75 dark:text-rose-100/80">
-                        أحد النباتات الموجودة في مزرعتنا، ويُعرف محليًا بهذا الاسم.
-                    </p>
-                </article>
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'hibiscus.avif'|cloudinary_image }}" data-lightbox-alt="الكركديه">
+                    <img src="{{ 'hibiscus.avif'|cloudinary_image }}" alt="الكركديه" loading="lazy">
+                    <span>الكركديه</span>
+                </button>
 
-                <article class="roots-flower-card roots-reveal rounded-[2rem] border border-yellow-200 bg-yellow-50 p-7 text-yellow-950 dark:border-yellow-400/20 dark:bg-[#3A3526] dark:text-yellow-100 lg:col-span-2">
-                    <svg viewBox="0 0 160 160" class="roots-flower-decoration mb-4 h-28 w-28 text-yellow-400" aria-hidden="true">
-                        <use href="#roots-flower-shape"></use>
-                    </svg>
-                    <h3 class="text-2xl font-bold">الورد الأصفر المخروطي</h3>
-                    <p class="mt-4 leading-8 text-yellow-900/75 dark:text-yellow-100/80">
-                        نبات مزهر يتميز بلونه الأصفر وشكله اللافت بين نباتات الحديقة.
-                    </p>
-                </article>
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'jasmine.avif'|cloudinary_image }}" data-lightbox-alt="الياسمين">
+                    <img src="{{ 'jasmine.avif'|cloudinary_image }}" alt="الياسمين" loading="lazy">
+                    <span>الياسمين</span>
+                </button>
 
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'kaf-maryam.avif'|cloudinary_image }}" data-lightbox-alt="كف مريم">
+                    <img src="{{ 'kaf-maryam.avif'|cloudinary_image }}" alt="كف مريم" loading="lazy">
+                    <span>كف مريم</span>
+                </button>
+
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'lantana.avif'|cloudinary_image }}" data-lightbox-alt="اللانتانا">
+                    <img src="{{ 'lantana.avif'|cloudinary_image }}" alt="اللانتانا" loading="lazy">
+                    <span>اللانتانا</span>
+                </button>
+
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'morning-glory.avif'|cloudinary_image }}" data-lightbox-alt="ورد الصباح">
+                    <img src="{{ 'morning-glory.avif'|cloudinary_image }}" alt="ورد الصباح" loading="lazy">
+                    <span>ورد الصباح</span>
+                </button>
+
+                <button type="button" class="roots-flower-card" data-lightbox-src="{{ 'plumeria.avif'|cloudinary_image }}" data-lightbox-alt="البلوميريا">
+                    <img src="{{ 'plumeria.avif'|cloudinary_image }}" alt="البلوميريا" loading="lazy">
+                    <span>البلوميريا</span>
+                </button>
             </div>
 
-            <p class="mt-8 text-center text-sm leading-7 text-[#66876A] dark:text-[#AFC7AD]">
-                الرسومات الزهرية زخرفية، وليست تصويرًا نباتيًا دقيقًا لكل نوع.
-            </p>
-
+            <p class="roots-flowers-note">صور الأزهار المرجعية للتعريف بالأنواع؛ أما صور المزرعة الحقيقية فمعروضة في القسم السابق.</p>
         </div>
     </section>
 
-
-    <section id="farm-gallery" class="scroll-mt-24 bg-[#EAEFE8] px-6 py-28 dark:bg-[#203329]">
-
-        <div class="mx-auto max-w-6xl">
-
-            <div class="roots-reveal mb-12 flex flex-wrap items-end justify-between gap-6">
-                <div>
-                    <span class="section-eyebrow text-[#66876A] dark:text-[#AFC7AD]">
-                        مشاهد من الطبيعة
-                    </span>
-
-                    <h2 class="editorial-heading mt-6 text-4xl font-bold text-[#173C30] md:text-6xl dark:text-[#F5F0E6]">
-                        من أرجاء مزرعتنا
-                    </h2>
-                </div>
-
-                <span class="roots-photo-counter text-sm font-semibold text-[#66876A] dark:text-[#C6A46C]">
-                    <span id="farm-current-slide">01</span> / 02
-                </span>
-            </div>
-
-            <div class="roots-reveal relative overflow-hidden rounded-[2rem] shadow-2xl">
-
-                <div class="swiper farm-swiper">
-
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide relative">
-                            <img
-                                src="{% static 'regions/images/farm/mango.jpg' %}"
-                                alt="أشجار المانجو"
-                                class="h-[350px] w-full object-cover md:h-[600px]"
-                                loading="lazy"
-                            >
-
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-
-                            <div class="absolute bottom-10 right-8 text-white md:right-12">
-                                <span class="text-sm text-[#E5D2A7]">01 / خيرات الأرض</span>
-                                <h3 class="mt-3 text-4xl font-bold">المانجو</h3>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide relative">
-                            <img
-                                src="{% static 'regions/images/farm/lemon.jpg' %}"
-                                alt="أشجار الليمون"
-                                class="h-[350px] w-full object-cover md:h-[600px]"
-                                loading="lazy"
-                            >
-
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-
-                            <div class="absolute bottom-10 right-8 text-white md:right-12">
-                                <span class="text-sm text-[#E5D2A7]">02 / خيرات الأرض</span>
-                                <h3 class="mt-3 text-4xl font-bold">الليمون</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <div class="absolute left-5 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-3">
-                    <button
-                        type="button"
-                        class="farm-next flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-black/20 text-2xl text-white backdrop-blur-md transition hover:bg-[#C6A46C] hover:text-[#173C30]"
-                        aria-label="الصورة التالية"
-                    >
-                        ←
-                    </button>
-
-                    <button
-                        type="button"
-                        class="farm-prev flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-black/20 text-2xl text-white backdrop-blur-md transition hover:bg-[#C6A46C] hover:text-[#173C30]"
-                        aria-label="الصورة السابقة"
-                    >
-                        →
-                    </button>
-                </div>
-
-            </div>
-
+    <footer class="roots-ending">
+        <div class="roots-container">
+            <span>من حلم الوالد إلى حياة الأرض</span>
+            <h2>ما زالت حكاية الأرض تنمو.</h2>
+            <a href="#roots-top">العودة إلى البداية ↑</a>
         </div>
-    </section>
-
-
-    <section class="relative overflow-hidden bg-[#173C30] px-6 py-28 text-center text-white dark:bg-[#102019]">
-
-        <div class="pointer-events-none absolute -left-16 -top-16 h-80 w-80 rounded-full border border-[#C6A46C]/20"></div>
-
-        <div class="roots-reveal relative mx-auto max-w-4xl">
-
-            <span class="section-eyebrow justify-center text-[#C6A46C]">
-                من عنيكر إلى أرضنا
-            </span>
-
-            <h2 class="editorial-heading mt-8 text-5xl font-bold md:text-7xl">
-                من أرض صغيرة،
-                <span class="block text-[#C6A46C]">
-                    تبدأ حكاية كبيرة.
-                </span>
-            </h2>
-
-            <p class="mx-auto mt-9 max-w-2xl text-lg leading-10 text-white/80">
-                كانت مزرعتنا مصدر إلهام لهذا المشروع،
-                ومنها انطلقت رحلتنا لاكتشاف التنوع الزراعي
-                في المملكة العربية السعودية.
-            </p>
-
-            <div class="mt-12 flex flex-wrap justify-center gap-4">
-                <a
-                    href="{% url 'regions:home' %}#regions"
-                    class="rounded-full bg-[#C6A46C] px-9 py-4 font-bold text-[#173C30] transition hover:-translate-y-1 hover:bg-[#E5D2A7]"
-                >
-                    استكشف مناطق أرضنا ↗
-                </a>
-
-                <a
-                    href="{% url 'regions:home' %}"
-                    class="rounded-full border border-white/40 px-9 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-white hover:text-[#173C30]"
-                >
-                    العودة للرئيسية ←
-                </a>
-            </div>
-
-        </div>
-    </section>
-
+    </footer>
 </main>
 
+<div class="roots-lightbox" id="roots-lightbox" role="dialog" aria-modal="true" aria-label="عرض الصورة" aria-hidden="true" hidden>
+    <button type="button" id="roots-lightbox-close" class="roots-lightbox-close" aria-label="إغلاق الصورة">×</button>
+    <img id="roots-lightbox-image" alt="">
+    <p id="roots-lightbox-caption"></p>
+</div>
+
+<script src="{% static 'regions/js/our_roots.js' %}" defer></script>
 {% endblock %}
-
-
-
-{% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
-<script src="{% static 'regions/js/our_roots.js' %}"></script>
-{% endblock %}
-

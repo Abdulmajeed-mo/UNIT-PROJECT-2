@@ -142,7 +142,7 @@
                         labels: {
                             color: textColor,
                             font: {
-                                family: "IBM Plex Sans Arabic"
+                               family: "Tajawal"
                             }
                         }
                     },
@@ -164,7 +164,7 @@
                         ticks: {
                             color: textColor,
                             font: {
-                                family: "IBM Plex Sans Arabic"
+                               family: "Tajawal"
                             }
                         },
                         grid: {
