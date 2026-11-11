@@ -29,7 +29,7 @@
       poster="{{ region.hero_image|cloudinary_image }}"
       aria-hidden="true"
     >
-      <source src="{% static region.intro_video %}" type="video/mp4" />
+     <source src="{{ region.intro_video|cloudinary_video }}" type="video/mp4" />
     </video>
     {% endif %}
   </div>

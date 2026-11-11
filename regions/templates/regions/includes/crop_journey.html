@@ -1,5 +1,5 @@
 
-{% load static %}
+{% load static cloudinary_tags %}
 
 <section
     id="journey"
@@ -58,7 +58,7 @@
                         >
                             {% if step.image %}
                             <img
-                                src="{% static step.image %}"
+                                src="{{ step.image|cloudinary_image }}"
                                 alt="{{ step.title }} في {{ region.name }}"
                                 class="journey-stage-image"
                                 loading="lazy"

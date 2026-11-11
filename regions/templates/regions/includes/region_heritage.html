@@ -1,6 +1,5 @@
 
-{% load static %}
-
+{% load static cloudinary_tags %}
 <section id="history" class="region-heritage scroll-mt-20 overflow-hidden bg-[#F5F0E6] px-6 py-24 text-[#173C30] dark:bg-[#17231D] dark:text-[#F5F0E6] md:py-32">
 
    
@@ -110,7 +109,7 @@
 
                     <div class="relative min-h-[320px] overflow-hidden lg:min-h-[500px]">
                         <img
-                            src="{% static region.hero_image %}"
+                            src="{{ region.hero_image|cloudinary_image }}"
                             alt="الطبيعة الزراعية في {{ region.name }}"
                             class="absolute inset-0 h-full w-full object-cover"
                             loading="lazy"
@@ -290,7 +289,7 @@
 
                     <div class="relative min-h-[320px] overflow-hidden lg:min-h-[500px]">
                         <img
-                            src="{% static region.hero_image %}"
+                            src="{{ region.hero_image|cloudinary_image }}"
                             alt="المنتجات الزراعية في {{ region.name }}"
                             class="absolute inset-0 h-full w-full object-cover"
                             loading="lazy"
