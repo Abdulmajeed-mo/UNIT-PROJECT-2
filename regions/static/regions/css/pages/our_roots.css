@@ -1,0 +1,118 @@
+
+    .roots-page {
+        --roots-green: #173C30;
+        --roots-gold: #C6A46C;
+        --roots-cream: #F5F0E6;
+    }
+
+    .roots-hero-media {
+        animation: rootsHeroZoom 14s ease-out both;
+    }
+
+    .roots-outline {
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, .45);
+    }
+
+    .roots-scroll-indicator {
+        height: 60px;
+        width: 1px;
+        position: relative;
+        overflow: hidden;
+        background: rgba(255, 255, 255, .3);
+    }
+
+    .roots-scroll-indicator::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        width: 100%;
+        height: 50%;
+        background: #C6A46C;
+        animation: rootsScroll 2s ease-in-out infinite;
+    }
+
+    .roots-story-image {
+        transition: transform 1s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .roots-story-image:hover {
+        transform: scale(1.06);
+    }
+
+    .roots-crop-tab {
+        transition: background .3s, color .3s, transform .3s;
+    }
+
+    .roots-crop-tab[aria-selected="true"] {
+        background: #173C30;
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .dark .roots-crop-tab[aria-selected="true"] {
+        background: #C6A46C;
+        color: #173C30;
+    }
+
+    .roots-crop-panel[hidden] {
+        display: none;
+    }
+
+    .roots-crop-panel {
+        animation: rootsAppear .5s ease both;
+    }
+
+    .roots-flower-card {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        transition: transform .45s ease, box-shadow .45s ease;
+    }
+
+    .roots-flower-card:hover {
+        transform: translateY(-9px);
+        box-shadow: 0 22px 45px rgba(23, 60, 48, .14);
+    }
+
+    .roots-flower-decoration {
+        transform-origin: 50% 90%;
+        transition: transform .65s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .roots-flower-card:hover .roots-flower-decoration {
+        transform: rotate(-9deg) scale(1.12);
+    }
+
+    .roots-photo-counter {
+        font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes rootsHeroZoom {
+        from { transform: scale(1.13); }
+        to { transform: scale(1); }
+    }
+
+    @keyframes rootsScroll {
+        to { top: 110%; }
+    }
+
+    @keyframes rootsAppear {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .roots-page *,
+        .roots-page *::before,
+        .roots-page *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+    }

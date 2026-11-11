@@ -1,0 +1,225 @@
+{% load static %}
+<section id="journey" class="crop-journey scroll-mt-20 overflow-hidden bg-[#F5F0E6] px-6 py-24 dark:bg-[#17231D] md:py-32">
+
+    <style>
+        .crop-journey .journey-stage {
+            border: 1px solid rgba(83, 125, 68, .18);
+            transition: background .35s ease, border-color .35s ease, transform .35s ease;
+        }
+
+        .crop-journey .journey-stage[aria-pressed="true"] {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .crop-journey .journey-stage[aria-pressed="true"] .journey-index {
+            background: white;
+            color: var(--primary);
+        }
+
+        .crop-journey .journey-progress {
+            width: 0;
+            transition: width .6s ease;
+            background: var(--primary);
+        }
+
+        .crop-journey .journey-art {
+            background: linear-gradient(150deg, #E6EBCF, #B7D5B4);
+        }
+
+        .dark .crop-journey .journey-art {
+            background: linear-gradient(150deg, #314B3A, #1D352A);
+        }
+
+        .crop-journey .journey-art-layer {
+            opacity: 0;
+            transform: translateY(15px) scale(.96);
+            transform-origin: center bottom;
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .crop-journey .journey-art-layer.is-active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .crop-journey .journey-leaf {
+            transform-origin: bottom center;
+            animation: journeySway 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes journeySway {
+            from { transform: rotate(-3deg); }
+            to { transform: rotate(3deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .crop-journey *,
+            .crop-journey *::before,
+            .crop-journey *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+
+    <div class="mx-auto max-w-7xl">
+
+        <div class="mb-16 max-w-4xl">
+            <span class="section-eyebrow text-[var(--primary)] dark:text-[var(--accent)]">
+                من الأرض إلى الحياة
+            </span>
+
+            <h2 class="editorial-heading mt-6 text-4xl font-bold text-[#173C30] md:text-6xl dark:text-[#F5F0E6]">
+                {{ region.journey_title }}
+            </h2>
+
+            <p class="mt-6 max-w-2xl text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                اكتشف مراحل الرحلة الزراعية في {{ region.name }}،
+                وشاهد كيف تتحول البدايات الصغيرة إلى خيرات تنمو من الأرض.
+            </p>
+        </div>
+
+        <div class="grid items-start gap-8 lg:grid-cols-2">
+
+            <div class="journey-art relative flex min-h-[350px] items-center justify-center overflow-hidden rounded-[2rem] p-6 shadow-xl md:min-h-[480px]">
+
+                <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/30"></div>
+
+                <svg viewBox="0 0 500 360" class="relative w-full max-w-[500px]" role="img" aria-label="رسم تفاعلي يوضح نمو النبات عبر مراحل رحلة المحصول">
+                    <circle cx="408" cy="70" r="39" fill="#E8BD6C"/>
+
+                    <path d="M0 278 Q120 233 250 276 T500 270 V360 H0Z" fill="#91AD78"/>
+                    <path d="M0 320 Q130 280 255 320 T500 308 V360 H0Z" fill="#6E965A"/>
+
+                    <g class="journey-art-layer is-active" data-art="0">
+                        <path d="M205 286 Q250 310 295 286 Q290 258 250 264 Q210 257 205 286Z" fill="#8A5A3B"/>
+                        <path d="M245 265 Q233 247 243 239 Q258 232 267 246 Q267 259 245 265Z" fill="#D6B274" stroke="#9D804D" stroke-width="3"/>
+                        <path d="M238 245 L260 261" stroke="#9D804D" stroke-width="2"/>
+                    </g>
+
+                    <g class="journey-art-layer" data-art="1">
+                        <path d="M250 293 V193" stroke="#376F43" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M250 245 Q195 195 164 228 Q188 269 250 245Z" fill="#4C995B"/>
+                        <path d="M250 211 Q309 163 337 197 Q316 245 250 211Z" fill="#5BAB69"/>
+                        <path d="M250 245 L187 232 M250 211 L318 200" stroke="#33794B" stroke-width="3" fill="none"/>
+                    </g>
+
+                    <g class="journey-art-layer" data-art="2">
+                        <path d="M250 300 V128" stroke="#346D42" stroke-width="13" stroke-linecap="round"/>
+                        <g class="journey-leaf">
+                            <path d="M250 233 Q156 155 114 204 Q146 258 250 233Z" fill="#4F9F60"/>
+                            <path d="M250 191 Q335 113 386 161 Q355 218 250 191Z" fill="#63B471"/>
+                            <path d="M250 153 Q207 94 174 109 Q174 153 250 181Z" fill="#3F8C55"/>
+                        </g>
+                        <circle cx="250" cy="118" r="31" fill="#C6A46C"/>
+                        <circle cx="217" cy="136" r="24" fill="#D9BA7C"/>
+                        <circle cx="282" cy="140" r="24" fill="#E0C48B"/>
+                    </g>
+
+                    <g class="journey-art-layer" data-art="3">
+                        <path d="M250 306 V118" stroke="#386D44" stroke-width="14" stroke-linecap="round"/>
+                        <path d="M250 230 Q159 159 121 199 Q162 262 250 230Z" fill="#4A9A5E"/>
+                        <path d="M250 193 Q338 119 388 168 Q356 224 250 193Z" fill="#5CB66F"/>
+                        <path d="M250 145 Q206 80 170 109 Q184 149 250 163Z" fill="#368A50"/>
+
+                        <circle cx="222" cy="117" r="25" fill="#C6A46C"/>
+                        <circle cx="271" cy="107" r="27" fill="#D9A84D"/>
+                        <circle cx="251" cy="151" r="24" fill="#E3BC65"/>
+
+                        <path d="M180 313 H328" stroke="#428EAA" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="180" cy="313" r="8" fill="#428EAA"/>
+                        <circle cx="254" cy="313" r="8" fill="#428EAA"/>
+                        <circle cx="328" cy="313" r="8" fill="#428EAA"/>
+                    </g>
+                </svg>
+
+                <div class="absolute bottom-6 right-6 rounded-full border border-white/40 bg-white/65 px-5 py-2 text-xs font-bold text-[#173C30] backdrop-blur-md">
+                    أرضنا | ARDNA
+                </div>
+
+            </div>
+
+            <div class="rounded-[2rem] border border-[#173C30]/10 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-[#26382E] md:p-10">
+
+                <div class="mb-8 flex items-center justify-between gap-4">
+                    <span class="text-sm font-bold text-[var(--primary)] dark:text-[var(--accent)]">
+                        رحلة المحصول
+                    </span>
+
+                    <span id="journey-counter" class="text-sm text-[#66876A] dark:text-[#C1D0C4]">
+                        01
+                    </span>
+                </div>
+
+                <div class="space-y-3">
+                    {% for step in region.journey %}
+                    <button
+                        type="button"
+                        class="journey-stage flex w-full items-center gap-4 rounded-2xl bg-[#F5F0E6] p-4 text-right text-[#173C30] dark:bg-[#1C2C23] dark:text-[#F5F0E6] md:p-5"
+                        data-journey-index="{{ forloop.counter0 }}"
+                        aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+                    >
+                        <span class="journey-index flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E2EBD9] font-bold text-[#173C30]">
+                            {{ forloop.counter }}
+                        </span>
+
+                        <span class="flex-1 text-lg font-bold">
+                            {{ step.title }}
+                        </span>
+
+                        <span aria-hidden="true">←</span>
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-7 h-[3px] overflow-hidden rounded-full bg-[#173C30]/10 dark:bg-white/15">
+                    <div id="journey-progress" class="journey-progress h-full"></div>
+                </div>
+
+                <div class="mt-8 min-h-[150px]" aria-live="polite">
+                    {% for step in region.journey %}
+                    <div
+                        class="journey-content {% if not forloop.first %}hidden{% endif %}"
+                        data-journey-content="{{ forloop.counter0 }}"
+                    >
+                        <h3 class="text-2xl font-bold text-[#173C30] dark:text-[#F5F0E6]">
+                            {{ step.title }}
+                        </h3>
+
+                        <p class="mt-4 text-lg leading-9 text-[#56685D] dark:text-[#C1D0C4]">
+                            {{ step.description }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <button
+                        id="journey-next"
+                        type="button"
+                        class="rounded-full bg-[var(--primary)] px-7 py-3 font-bold text-white transition hover:brightness-110"
+                    >
+                        المرحلة التالية ←
+                    </button>
+
+                    <button
+                        id="journey-reset"
+                        type="button"
+                        class="rounded-full border border-[#173C30]/20 px-6 py-3 font-semibold text-[#173C30] transition hover:bg-[#EAEFE8] dark:border-white/20 dark:text-white dark:hover:bg-[#35483B]"
+                    >
+                        من البداية
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-8 text-center text-sm text-[#66876A] dark:text-[#AFC7AD]">
+            الرسومات توضيحية، وتعرض تسلسلًا بصريًا عامًا للمراحل الزراعية.
+        </p>
+    </div>
+</section>
+
+<script src="{% static 'regions/js/components/crop_journey.js' %}"></script>

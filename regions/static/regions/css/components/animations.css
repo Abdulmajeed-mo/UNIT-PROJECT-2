@@ -1,0 +1,86 @@
+
+        .agri-timeline .timeline-step {
+            border: 1px solid rgba(83, 125, 68, .20);
+            transition: background .35s, border-color .35s, transform .35s;
+        }
+
+        .agri-timeline .timeline-step[aria-pressed="true"] {
+            background: #173C30;
+            border-color: #C6A46C;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .agri-timeline .timeline-step[aria-pressed="true"] .timeline-year {
+            color: #E5D2A7;
+        }
+
+        .dark .agri-timeline .timeline-step {
+            border-color: rgba(255,255,255,.15);
+        }
+
+        .agri-timeline .timeline-progress {
+            height: 3px;
+            background: linear-gradient(90deg, #356B4E, #C6A46C);
+            width: 0;
+            transition: width .6s ease;
+        }
+
+        .agri-timeline .timeline-scene {
+            background: linear-gradient(150deg, #E6E8C9, #BDD7C6);
+            transition: background .6s ease;
+        }
+
+        .agri-timeline .timeline-scene[data-stage="0"] {
+            background: linear-gradient(150deg, #F0DCB8, #D5B888);
+        }
+
+        .agri-timeline .timeline-scene[data-stage="1"] {
+            background: linear-gradient(150deg, #E8E9B6, #A7C397);
+        }
+
+        .agri-timeline .timeline-scene[data-stage="2"] {
+            background: linear-gradient(150deg, #DBE9D3, #8DB6A2);
+        }
+
+        .agri-timeline .timeline-scene[data-stage="3"] {
+            background: linear-gradient(150deg, #D2EEE0, #86B7AF);
+        }
+
+        .agri-timeline .scene-layer {
+            opacity: 0;
+            transition: opacity .6s ease;
+        }
+
+        .agri-timeline .scene-layer.is-active {
+            opacity: 1;
+        }
+
+        .agri-timeline .timeline-plant {
+            transform-origin: center bottom;
+            animation: agriSway 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes agriSway {
+            from { transform: rotate(-2deg); }
+            to { transform: rotate(2deg); }
+        }
+
+        .agri-timeline .chart-switch[aria-pressed="true"] {
+            background: #173C30;
+            color: white;
+        }
+
+        .dark .agri-timeline .chart-switch[aria-pressed="true"] {
+            background: #C6A46C;
+            color: #173C30;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .agri-timeline *,
+            .agri-timeline *::before,
+            .agri-timeline *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }

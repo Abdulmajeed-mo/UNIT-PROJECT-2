@@ -1,6 +1,12 @@
 
 @import "tailwindcss";
 
+@import "./components/animations.css";
+@import "./components/heritage.css";
+@import "./pages/home.css";
+@import "./pages/region_detail.css";
+@import "./pages/our_roots.css";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
