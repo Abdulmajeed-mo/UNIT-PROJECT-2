@@ -367,7 +367,7 @@ The project demonstrates practical implementation of:
 
 ## 👨‍💻 Developer
 
-**Abdulmajeed Mohammed Al-Hassani**
+**Abdulmajeed Mohammed Al-Hasani**
 
 Computer Science Graduate | Software Developer
 
